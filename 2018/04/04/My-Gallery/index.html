@@ -81,6 +81,13 @@
             </li>
         
             <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
@@ -177,6 +184,8 @@
 </span><br>
 
 
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/04/04/My-Gallery/" target="_blank" rel="external">https://blueleer.github.io/2018/04/04/My-Gallery/</a>
         
     </div>
     <footer>
@@ -292,7 +301,7 @@
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢支持~
+        谢谢大爷~
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">
@@ -442,10 +451,10 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = 'Miss You~';
+            document.title = '死鬼去哪里了！';
             clearTimeout(titleTime);
         } else {
-            document.title = '欢迎交流~';
+            document.title = '(つェ⊂)咦!又好了!';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);
