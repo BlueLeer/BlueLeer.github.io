@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blueleer.github.io/"/>
-  <updated>2018-04-05T14:50:01.382Z</updated>
+  <updated>2018-04-05T14:53:10.906Z</updated>
   <id>https://blueleer.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test3</title>
+    <link href="https://blueleer.github.io/2018/04/05/test3/"/>
+    <id>https://blueleer.github.io/2018/04/05/test3/</id>
+    <published>2018-04-05T14:52:07.000Z</published>
+    <updated>2018-04-05T14:53:10.906Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="这是一个主题测试的文档"><a href="#这是一个主题测试的文档" class="headerlink" title="这是一个主题测试的文档"></a>这是一个主题测试的文档</h1><h2 id="这是一个主题测试的文档-1"><a href="#这是一个主题测试的文档-1" class="headerlink" title="这是一个主题测试的文档"></a>这是一个主题测试的文档</h2><h2 id="这是一个主题测试的文档-2"><a href="#这是一个主题测试的文档-2" class="headerlink" title="这是一个主题测试的文档"></a>这是一个主题测试的文档</h2><h3 id="这是一个主题测试的文档-3"><a href="#这是一个主题测试的文档-3" class="headerlink" title="这是一个主题测试的文档"></a>这是一个主题测试的文档</h3><h4 id="这是一个主题测试的文档-4"><a href="#这是一个主题测试的文档-4" class="headerlink" title="这是一个主题测试的文档"></a>这是一个主题测试的文档</h4><h5 id="这是一个主题测试的文档-5"><a href="#这是一个主题测试的文档-5" class="headerlink" title="这是一个主题测试的文档"></a>这是一个主题测试的文档</h5>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;这是一个主题测试的文档&quot;&gt;&lt;a href=&quot;#这是一个主题测试的文档&quot; class=&quot;headerlink&quot; title=&quot;这是一个主题测试的文档&quot;&gt;&lt;/a&gt;这是一个主题测试的文档&lt;/h1&gt;&lt;h2 id=&quot;这是一个主题测试的文档-1&quot;&gt;&lt;a href=&quot;#这是一个
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="https://blueleer.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="hexo主题测试" scheme="https://blueleer.github.io/tags/hexo%E4%B8%BB%E9%A2%98%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>test2</title>
