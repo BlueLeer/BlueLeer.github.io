@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blueleer.github.io/"/>
-  <updated>2018-04-05T13:34:40.351Z</updated>
+  <updated>2018-04-05T14:50:01.382Z</updated>
   <id>https://blueleer.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test2</title>
+    <link href="https://blueleer.github.io/2018/04/05/test2-1/"/>
+    <id>https://blueleer.github.io/2018/04/05/test2-1/</id>
+    <published>2018-04-05T14:48:51.000Z</published>
+    <updated>2018-04-05T14:50:01.382Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="测试" scheme="https://blueleer.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="hexo主题测试" scheme="https://blueleer.github.io/tags/hexo%E4%B8%BB%E9%A2%98%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>test2</title>
