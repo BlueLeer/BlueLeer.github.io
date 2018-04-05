@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[test3]]></title>
+    <url>%2F2018%2F04%2F05%2Ftest3%2F</url>
+    <content type="text"><![CDATA[这是一个主题测试的文档这是一个主题测试的文档这是一个主题测试的文档这是一个主题测试的文档这是一个主题测试的文档这是一个主题测试的文档]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>hexo主题测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[test2]]></title>
+    <url>%2F2018%2F04%2F05%2Ftest2-1%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>hexo主题测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[test2]]></title>
+    <url>%2F2018%2F04%2F05%2Ftest2%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Boardcast]]></title>
+    <url>%2F2018%2F04%2F05%2FBoardcast%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Java中的路径问题&&properties文件的路径问题]]></title>
+    <url>%2F2018%2F04%2F05%2Ftest%2F</url>
+    <content type="text"><![CDATA[123// 在当前的项目的根目录下面创建一个abc.txt文件// 例如:项目名为 guanjiapo 则在项目的根目录(也就是guanjiapo目录)下创建一个abc.txt文件File file = new File("abc.txt"); 在Intellij中:使用getClassLoader().getResourceAsStream()1properties.load(DBUtils.class.getClassLoader().getResourceAsStream("dbcp.properties")); 加载的是src目录下的文件:dbcp.properties文件 使用.class.getResourceAsStream()1properties.load(DBUtils.class.getResourceAsStream("/dbcp.properties")); 加载的是项目class文件根目录下的dbcp.properties文件(注意:”/“代表的是class文件的根目录,例如项目guanjiapo,则是out下的production下的guanjiapo目录)]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Activity的生命周期]]></title>
+    <url>%2F2018%2F04%2F05%2FActivity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%2F</url>
+    <content type="text"><![CDATA[android活动的流程1.]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Category1]]></title>
+    <url>%2F2018%2F04%2F05%2FCategory1%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[My Gallery]]></title>
+    <url>%2F2018%2F04%2F04%2FMy-Gallery%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[nihao]]></title>
+    <url>%2F2018%2F04%2F04%2Fnihao%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F04%2F04%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
