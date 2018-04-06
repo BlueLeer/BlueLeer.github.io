@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blueleer.github.io/"/>
-  <updated>2018-04-06T13:51:40.576Z</updated>
+  <updated>2018-04-06T15:45:29.361Z</updated>
   <id>https://blueleer.github.io/</id>
   
   <author>
@@ -21,24 +21,26 @@
     <link href="https://blueleer.github.io/2018/04/06/hexo%E4%B8%BB%E9%A2%98%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
     <id>https://blueleer.github.io/2018/04/06/hexo主题之next主题的配置/</id>
     <published>2018-04-06T13:46:36.000Z</published>
-    <updated>2018-04-06T13:51:40.576Z</updated>
+    <updated>2018-04-06T15:45:29.361Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h3><p><img src="/hexo主题之next主题的配置/img1.PNG" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p>关于 hexo 主题之next主题</p><ul><li><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">GiuHub地址</a></li><li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">Next主题配置官网文档</a></li><li><a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">hexo的next主题个性化教程:打造炫酷网站</a></li></ul><p>另外附上大致的使用GitHub Pages建站的流程:</p><ol><li>注册GitHub账号</li><li>创建 YourName.github.io库,GitHub默认把它当做静态html托管页面(我们实际上也仅仅是在它上面托管我们的静态网页,它还能够识别解析css和js文件)</li><li>在GitHub上生成 SSH Keys (后面使用的hexo在本地拥有了一个SSH Keys的拷贝,这样就可以实现快速部署到pages仓库)</li><li>安装hexo,推荐参考 <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">hexo官方文档</a> 这样可以少走很多弯路,遇到问题了再去查解决方法</li><li>然后就可以找一款自己喜欢的主题啦 <a href="https://hexo.io/" target="_blank" rel="noopener">hexo官网</a>,这上面有很全的plug插件和theme主题,也可以参考别人的推荐,我就用的是GitHub上star数醉的的一款next</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;图片测试&quot;&gt;&lt;a href=&quot;#图片测试&quot; class=&quot;headerlink&quot; title=&quot;图片测试&quot;&gt;&lt;/a&gt;图片测试&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/hexo主题之next主题的配置/img1.PNG&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
+        &lt;p&gt;关于 hexo 主题之next主题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/iissnan/hexo-theme-next&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GiuHub地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
       
     
     </summary>
     
-      <category term="测试" scheme="https://blueleer.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+      <category term="其他" scheme="https://blueleer.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="主题测试" scheme="https://blueleer.github.io/tags/%E4%B8%BB%E9%A2%98%E6%B5%8B%E8%AF%95/"/>
+      <category term="hexo主题配置" scheme="https://blueleer.github.io/tags/hexo%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
