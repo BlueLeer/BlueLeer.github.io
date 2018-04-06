@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[hexo主题之next主题的配置]]></title>
     <url>%2F2018%2F04%2F06%2Fhexo%E4%B8%BB%E9%A2%98%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[关于 hexo 主题之next主题 GiuHub地址 Next主题配置官网文档 hexo的next主题个性化教程:打造炫酷网站 另外附上大致的使用GitHub Pages建站的流程: 注册GitHub账号 创建 YourName.github.io库,GitHub默认把它当做静态html托管页面(我们实际上也仅仅是在它上面托管我们的静态网页,它还能够识别解析css和js文件) 在GitHub上生成 SSH Keys (后面使用的hexo在本地拥有了一个SSH Keys的拷贝,这样就可以实现快速部署到pages仓库) 安装hexo,推荐参考 hexo官方文档 这样可以少走很多弯路,遇到问题了再去查解决方法 然后就可以找一款自己喜欢的主题啦 hexo官网,这上面有很全的plug插件和theme主题,也可以参考别人的推荐,我就用的是GitHub上star数醉的的一款next]]></content>
+    <content type="text"><![CDATA[关于 hexo 主题之next主题 GiuHub地址 Next主题配置官网文档 hexo的next主题个性化教程:打造炫酷网站 另外附上大致的使用GitHub Pages建站的流程: 注册GitHub账号 创建 YourName.github.io库,GitHub默认把它当做静态html托管仓库(我们实际上也仅仅是在它上面托管我们的静态网页,它还能够识别解析css和js文件) 在GitHub上生成 SSH Keys (后面使用的hexo在本地拥有了一个SSH Keys的拷贝,这样就可以实现快速部署到pages仓库) 安装hexo,推荐参考 hexo官方文档 这样可以少走很多弯路,遇到问题了再去查解决方法 然后就可以找一款自己喜欢的主题啦 hexo官网,这上面有很全的plug插件和theme主题,也可以参考别人的推荐,我就用的是GitHub上star数醉的的一款next]]></content>
       <categories>
         <category>其他</category>
       </categories>
