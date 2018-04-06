@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blueleer.github.io/"/>
-  <updated>2018-04-06T14:25:22.876Z</updated>
+  <updated>2018-04-06T13:51:40.576Z</updated>
   <id>https://blueleer.github.io/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>loveyou</title>
-    <link href="https://blueleer.github.io/2018/04/06/loveyou/"/>
-    <id>https://blueleer.github.io/2018/04/06/loveyou/</id>
-    <published>2018-04-06T14:24:03.000Z</published>
-    <updated>2018-04-06T14:25:22.876Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="亲爱的-我也想你啦"><a href="#亲爱的-我也想你啦" class="headerlink" title="亲爱的,我也想你啦`"></a>亲爱的,我也想你啦<code>`</code></h2><p><img src="icon.jpg" alt="想你啦"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;亲爱的-我也想你啦&quot;&gt;&lt;a href=&quot;#亲爱的-我也想你啦&quot; class=&quot;headerlink&quot; title=&quot;亲爱的,我也想你啦`&quot;&gt;&lt;/a&gt;亲爱的,我也想你啦&lt;code&gt;`&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;icon.jpg&quot; alt=&quot;想你
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="https://blueleer.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="测试" scheme="https://blueleer.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
   
   <entry>
     <title>hexo主题之next主题的配置</title>
