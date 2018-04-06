@@ -23,4 +23,15 @@
         <tag>Java正则表达式</tag>
       </tags>
   </entry>
+  <entry>
+    <title><![CDATA[在活动中使用菜单Menu和PopupMenu]]></title>
+    <url>%2F2016%2F11%2F01%2F%E5%9C%A8%E6%B4%BB%E5%8A%A8%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%8F%9C%E5%8D%95Menu%E5%92%8CPopupMenu%2F</url>
+    <content type="text"><![CDATA[在Activity中使用Menu和PopupMenu流程: 点击res目录新建Android resouce file文件,选择resoucetype为menu,然后可以创建如下菜单的布局: 12345678&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt; &lt;item android:id="@+id/refresh_item" android:title="刷新"/&gt; &lt;item android:id="@+id/change_city" android:title="选择城市"/&gt;&lt;/menu&gt; 然后在活动中重写onCreateOptionsMenu(Menu menu)方法: 12345public boolean onCreateOptionsMenu(Menu menu) &#123; //R.menu.menu就是menu的布局文件 getMenuInflater().inflate(R.menu.menu,menu); return true;&#125; ​ 然后在手机上点击”菜单”就可以弹出菜单了,该菜单是从屏幕底部弹出的. 当然我们也可以为点击菜单上的项目注册响应事件,通过重写onOptionsItemSelected()方法: 1234567891011public boolean onOptionsItemSelected(MenuItem item) &#123; switch(item.getItemId())&#123; case R.id.refresh_item: //加入逻辑 break; case R.id.change_city: //加入逻辑 break; &#125; return super.onOptionsItemSelected(item);&#125; 有时候我们希望通过点击屏幕上自己定义的一个组件弹出一个菜单来,并且这个菜单就在这个组件的周围,那么可以这么来写(还是使用刚刚我们定义的menu布局文件): 12345678910Button button = (Button)findViewById(R.id.refresh);//点击这个按钮就能弹出一个菜单来button.setOnClickListener(new View.OnClickListener()&#123; @Override public void onClick(View view) &#123; PopupMenu popupMenu = new PopupMenu(MainActivity.this,view); popupMenu.getMenuInflater().inflate(R.menu.menu,popupMenu.getMenu()); popupMenu.show(); &#125;&#125;); ​ ​ 在刷新按钮的周围弹出了一个菜单 ​ 当然我们也可以为PopupMenu响应点击事件: 12345678910popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() &#123; @Override public boolean onMenuItemClick(MenuItem menuItem) &#123; switch(menuItem.getId())&#123; case R.id.refresh_item //加入自己的逻辑(点击以后发生的事件) &#125; return false; &#125;&#125;);]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
 </search>
