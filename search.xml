@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[回车和换行]]></title>
+    <url>%2F2018%2F04%2F07%2F%E5%9B%9E%E8%BD%A6%E5%92%8C%E6%8D%A2%E8%A1%8C%2F</url>
+    <content type="text"><![CDATA[今天在做爬虫的时候,需要匹配下面Title中的内容,发现写的正则表达式question_link(.)&gt;(\n)(.+)(\n*)&lt;竟然匹配不上里面的中文,原来在win系统中文件中的换行其实包含了两个字符, /CR(回车),/LF(换行),这两个”.”都是匹配不上的. 123&lt;h2&gt;&lt;a class="question_link" href="/question/270597366/answer/355546388" data-id="22407872" data-za-element-name="Title"&gt;如何看待星巴克被指含有致癌物质（丙烯酰胺Acrylamide）？&lt;/a&gt;&lt;/h2&gt; 修改成下面,成功匹配 1question_link(.*)&gt;(\r)(\n)(.*) 完整代码为: 1234567891011121314// 其中这段是从文件中摘录的,文件中查看特殊符号显示了换行包含两个字符 一个回车一个换行String s = "&lt;h2&gt;&lt;a class="question_link" href="/question/270597366/answer/355546388" data-id="22407872" data-za-element-name="Title"&gt;如何看待星巴克被指含有致癌物质（丙烯酰胺Acrylamide）？&lt;/a&gt;&lt;/h2&gt;" String regex = "question_link(.*)&gt;(\\r)(\\n)(.*)";Pattern pattern = Pattern.compile(regex);Matcher matcher = pattern.matcher(sb.toString());matcher.find();String group = matcher.group(4);System.out.println(group);// 输出:// 如何看待星巴克被指含有致癌物质（丙烯酰胺Acrylamide）？ 小示例: 123456789String s1 = "\r1234\r567";String s2 = "\n12345";System.out.println(s1);System.out.println(s2);// 输出:56712345 再次强调,回车和换行,”.”都不能匹配 1234567String s1 = "\r1234\r567";String regex = ".*";String regex1 = "\\r.*";Pattern pattern = Pattern.compile(regex1); // 换成regex则下面的输出为空,也就是不能匹配Matcher matcher = pattern.matcher(s1);matcher.find();System.out.println(matcher.group()); 更多知识请参考: 终于搞懂了回车与换行的区别]]></content>
+      <categories>
+        <category>java</category>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo主题之next主题的配置]]></title>
     <url>%2F2018%2F04%2F06%2Fhexo%E4%B8%BB%E9%A2%98%E4%B9%8Bnext%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[关于 hexo 主题之next主题 GiuHub地址 Next主题配置官网文档 hexo的next主题个性化教程:打造炫酷网站 另外附上大致的使用GitHub Pages建站的流程: 注册GitHub账号 创建 YourName.github.io库,GitHub默认把它当做静态html托管仓库(我们实际上也仅仅是在它上面托管我们的静态网页,它还能够识别解析css和js文件) 在GitHub上生成 SSH Keys (后面使用的hexo在本地拥有了一个SSH Keys的拷贝,这样就可以实现快速部署到pages仓库) 安装hexo,推荐参考 hexo官方文档 这样可以少走很多弯路,遇到问题了再去查解决方法 然后就可以找一款自己喜欢的主题啦 hexo官网,这上面有很全的plug插件和theme主题,也可以参考别人的推荐,我就用的是GitHub上star数醉的的一款next]]></content>
