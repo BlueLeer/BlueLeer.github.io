@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Coding...Coding...">
 <meta property="og:description" content="虽然在Windows系统上安装的Git是可以在图形界面上进行操作的,但是我们并不应该这么做,Git的各种命令才是我们应该掌握的,而且将来我们不管换成什么样的操作系统,使用Git命令来操作都是通用的 1. 创建代码仓库初次打开Bash的时候我们应该配置身份 12git confing --global user.name &quot;yourname&quot;git confing --global user.ema">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-07T16:08:19.075Z">
+<meta property="og:updated_time" content="2018-04-07T17:02:45.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git版本控制工具的简单使用">
 <meta name="twitter:description" content="虽然在Windows系统上安装的Git是可以在图形界面上进行操作的,但是我们并不应该这么做,Git的各种命令才是我们应该掌握的,而且将来我们不管换成什么样的操作系统,使用Git命令来操作都是通用的 1. 创建代码仓库初次打开Bash的时候我们应该配置身份 12git confing --global user.name &quot;yourname&quot;git confing --global user.ema">
@@ -405,9 +405,9 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 <p>这样会在BroadcastTest目录下生成一个 .git 文件夹</p>
 <h3 id="2-提交本地代码"><a href="#2-提交本地代码" class="headerlink" title="2. 提交本地代码"></a>2. 提交本地代码</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add AndroidManifest.xml   # 将AndroidManifest.xml文件添加进本地仓库</span><br><span class="line">git add src # 将src目录添加进本地仓库</span><br><span class="line">git add . # 添加所有的文件到本地仓库</span><br></pre></td></tr></table></figure>
-<p>上面的添加只是将文件/文件夹添加到本地仓库,他还没有上传至GitHub代码仓库,接下来运行命令:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m "first commit" # 其中"first commit"是本次提交的描述,建议加上此次上传的描述,将来我们可以很方便的看到上传了什么</span><br></pre></td></tr></table></figure>
-<h3 id="3-忽略文件"><a href="#3-忽略文件" class="headerlink" title="3. 忽略文件"></a>3. 忽略文件</h3><p><em>我们上传的时候,并不是该项目下所有的文件都得上传,例如 .idea 文件夹是不需要上传的,它是IDE自动生成的,将来我们clone到本地的时候它还会自动生成,那么怎么忽略掉这些文件呢?</em></p>
+<p>上面的添加只是将文件/文件夹添加到本地仓库,并没有提交:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m "first commit" # 其中"first commit"是本次提交的描述,建议加上此次提交的描述,将来我们可以很方便的看到提交了什么</span><br></pre></td></tr></table></figure>
+<h3 id="3-忽略文件"><a href="#3-忽略文件" class="headerlink" title="3. 忽略文件"></a>3. 忽略文件</h3><p><em>我们提交的时候,并不是该项目下所有的文件都得提交,例如 .idea 文件夹是不需要提交的,它是IDE自动生成的,那么怎么忽略掉这些文件呢?</em></p>
 <p><strong>第一步: 在BroadcastTest目录下创建 .gitignore文件</strong></p>
 <p><em>注意可能你在创建该文件的时候提示你”必须键入文件名,解决方法是:</em></p>
 <ol>
@@ -416,7 +416,7 @@
 <li><em>在项目根目录下面按住Shift键并鼠标右键选择“在此处打开命令窗口”</em></li>
 <li><em>执行命令 <code>ren gitignore.txt .gitignore</code></em></li>
 </ol>
-<p><strong>第二步:编辑.gitignore文件,将你想要忽略上传的文件或者文件夹加入</strong></p>
+<p><strong>第二步:编辑.gitignore文件,将你想要忽略提交的文件或者文件夹加入</strong></p>
 <p>例如:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bin/</span><br><span class="line">gen/</span><br><span class="line">*.html # 忽略所有的html文件,其中 "*" 为通配符,表示任意多个字符, "?" 代表一个字符, 方括号 [abc]代表可选字符范围</span><br></pre></td></tr></table></figure>
 <p>编辑好上面的.gitignore文件以后,执行 <code>git add .</code>就会自动将匹配上的文件或者文件夹忽略,然后执行</p>
@@ -441,7 +441,8 @@
 <p><strong>当你想把version1.0分支上所做的修改合并到master分支上,使用下面的命令进行</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master   # 先切换到master分支上</span><br><span class="line">git merge version1.0  # 合并merge分支上的修改到master分支上,此时version1.0分支上的代码不会受到影响</span><br><span class="line">					# 另外,合并分支的时候可能会出现代码冲突的情况,此时应该慢慢查找那些冲突的代码,git					  无力帮助我们</span><br></pre></td></tr></table></figure>
 <p><code>git branch -D version1.0</code>  删除version1.0的分支</p>
-<h3 id="8-与远程版本库协作"><a href="#8-与远程版本库协作" class="headerlink" title="8. 与远程版本库协作"></a>8. 与远程版本库协作</h3><p>所有的版本控制工具最重要的一个特点就是可以使用它来进行团队合作开发,每个人的电脑上都会有一份代码,当团队的某个成员在自己的电脑上编写完成了某个功能后,就将代码提交到服务器,其他的成员只需要将服务器上的代码同步到本地,就能保证整个团队所有人的代码都相同.这样的话,每个成员就可以各司其职,完成每个人负责的模块,这样就可以共同完成一个庞大的项目.</p>
+<h3 id="8-与远程版本库协作"><a href="#8-与远程版本库协作" class="headerlink" title="8. 与远程版本库协作"></a>8. 与远程版本库协作</h3><p><strong>上面的操作都是在本地完成的,只适合个人作为项目版本的控制方法</strong></p>
+<p>所有的版本控制工具最重要的一个特点就是可以使用它来进行团队合作开发,每个人的电脑上都会有一份代码,当团队的某个成员在自己的电脑上编写完成了某个功能后,就将代码提交到服务器,其他的成员只需要将服务器上的代码同步到本地,就能保证整个团队所有人的代码都相同.这样的话,每个成员就可以各司其职,完成每个人负责的模块,这样就可以共同完成一个庞大的项目.</p>
 <p>现在,项目负责人在Git上创建了一个项目,项目地址为:<a href="https://github.com/BlueLeer/Crawler" target="_blank" rel="noopener">https://github.com/BlueLeer/Crawler</a></p>
 <p><strong>将代码下载到本地</strong>:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/BlueLeer/Crawler.git</span><br></pre></td></tr></table></figure>
@@ -453,6 +454,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
 <p>推荐使用上面的方法,当然下面的方法更简单,一步到位,那就是<code>pull</code>命令了,它其实相当于将<code>fetch</code>和<code>merge</code>两个命令放在一起执行了,它从远程的版本苦衷获取罪行的代码并合并到本地:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<h3 id="9-上传本地项目"><a href="#9-上传本地项目" class="headerlink" title="9.上传本地项目"></a>9.上传本地项目</h3><p>参考:<a href="https://www.cnblogs.com/specter45/p/github.html" target="_blank" rel="noopener">github入门到上传本地项目</a></p>
 
       
     </div>
@@ -654,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建代码仓库"><span class="nav-number">1.</span> <span class="nav-text">1. 创建代码仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-提交本地代码"><span class="nav-number">2.</span> <span class="nav-text">2. 提交本地代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-忽略文件"><span class="nav-number">3.</span> <span class="nav-text">3. 忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查看修改内容"><span class="nav-number">4.</span> <span class="nav-text">4. 查看修改内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-撤销未提交的修改"><span class="nav-number">5.</span> <span class="nav-text">5. 撤销未提交的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看提交记录"><span class="nav-number">6.</span> <span class="nav-text">6. 查看提交记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-分支的用法"><span class="nav-number">7.</span> <span class="nav-text">7. 分支的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-与远程版本库协作"><span class="nav-number">8.</span> <span class="nav-text">8. 与远程版本库协作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建代码仓库"><span class="nav-number">1.</span> <span class="nav-text">1. 创建代码仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-提交本地代码"><span class="nav-number">2.</span> <span class="nav-text">2. 提交本地代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-忽略文件"><span class="nav-number">3.</span> <span class="nav-text">3. 忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查看修改内容"><span class="nav-number">4.</span> <span class="nav-text">4. 查看修改内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-撤销未提交的修改"><span class="nav-number">5.</span> <span class="nav-text">5. 撤销未提交的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看提交记录"><span class="nav-number">6.</span> <span class="nav-text">6. 查看提交记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-分支的用法"><span class="nav-number">7.</span> <span class="nav-text">7. 分支的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-与远程版本库协作"><span class="nav-number">8.</span> <span class="nav-text">8. 与远程版本库协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-上传本地项目"><span class="nav-number">9.</span> <span class="nav-text">9.上传本地项目</span></a></li></ol></div>
             
 
           </div>
