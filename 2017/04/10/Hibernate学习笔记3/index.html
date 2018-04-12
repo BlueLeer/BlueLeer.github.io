@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="学习日记,错误解决," />
+  <meta name="keywords" content="学习日记,错误解决,Hibernate," />
 
 
 
@@ -82,14 +82,14 @@
 
 
 <meta name="description" content="Hibernate–3学习大纲:  数据库中表的关系  一对一  一对多  多对多 注意:不管是哪种关系,在逻辑上都有主表和从表之分    外键 : 从表中的一列来源于主表的主键,或者为null,默认情况下外键是可以重复的  如何确立和实现表之间的关系  确立:看表的外键90%的情况下能确立表之间的关系  实现:  一对一 (A表和B表):   B表中的外键是A表的主键,且此外键设置唯一约束,非空">
-<meta name="keywords" content="学习日记,错误解决">
+<meta name="keywords" content="学习日记,错误解决,Hibernate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hibernate学习笔记3">
 <meta property="og:url" content="https://blueleer.github.io/2017/04/10/Hibernate学习笔记3/index.html">
 <meta property="og:site_name" content="Coding...Coding...">
 <meta property="og:description" content="Hibernate–3学习大纲:  数据库中表的关系  一对一  一对多  多对多 注意:不管是哪种关系,在逻辑上都有主表和从表之分    外键 : 从表中的一列来源于主表的主键,或者为null,默认情况下外键是可以重复的  如何确立和实现表之间的关系  确立:看表的外键90%的情况下能确立表之间的关系  实现:  一对一 (A表和B表):   B表中的外键是A表的主键,且此外键设置唯一约束,非空">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-12T07:04:30.516Z">
+<meta property="og:updated_time" content="2018-04-12T11:12:02.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hibernate学习笔记3">
 <meta name="twitter:description" content="Hibernate–3学习大纲:  数据库中表的关系  一对一  一对多  多对多 注意:不管是哪种关系,在逻辑上都有主表和从表之分    外键 : 从表中的一列来源于主表的主键,或者为null,默认情况下外键是可以重复的  如何确立和实现表之间的关系  确立:看表的外键90%的情况下能确立表之间的关系  实现:  一对一 (A表和B表):   B表中的外键是A表的主键,且此外键设置唯一约束,非空">
@@ -342,28 +342,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -478,10 +456,37 @@
 </li>
 <li><p>第四步:在映射配置文件中配置两张表之间的关系</p>
 <p>Student实体对应的数据库表</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="comment">&lt;!--指定命名空间,从hibernate-core-5.2.16.Final包中找--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.lee.many2many"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Student"</span> <span class="attr">table</span>=<span class="string">"hb_student"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"sid"</span> <span class="attr">column</span>=<span class="string">"s_id"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--主键自增长,使用数据库本地的自增长能力--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sname"</span> <span class="attr">column</span>=<span class="string">"s_name"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sage"</span> <span class="attr">column</span>=<span class="string">"s_age"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        set:用于配置映射的集合属性</span></span><br><span class="line"><span class="comment">        name:指定当前映射实体类中对应集合属性的属性名称</span></span><br><span class="line"><span class="comment">        table:指定生成中间表的表名</span></span><br><span class="line"><span class="comment">        column:当前映射文件对应实体在中间表中的联合主键字段</span></span><br><span class="line"><span class="comment">        class:指定集合属性所装的实体类型</span></span><br><span class="line"><span class="comment">        column:指定对方在表中对应的字段名称</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--注意:多对多情况下慎用级联删除,可能会出现删除不需要删除的对象--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"teachers"</span> <span class="attr">table</span>=<span class="string">"tea_stu_ref"</span>  <span class="attr">cascade</span>=<span class="string">"save-update,delete"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"stu_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"Teacher"</span> <span class="attr">column</span>=<span class="string">"tea_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-many</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        理解 : 因为维护了多的一方的集合,肯定要知道多的一方对应的实体类(!!必须配置实体类名)</span></span><br><span class="line"><span class="comment">            : 多的一方怎么跟我建立起关系的呢?因为它引用了我的主键作为它的外键(!!必须要知道外键对应的字段)</span></span><br><span class="line"><span class="comment">           : 因为已经指定了实体类,而实体类已经通过映射配置文件为其配置了对应的表名,因此表名可有可无</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Teacher实体对应的数据库表</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.lee.many2many"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Teacher"</span> <span class="attr">table</span>=<span class="string">"hb_teacher"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"tid"</span> <span class="attr">column</span>=<span class="string">"t_id"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"tname"</span> <span class="attr">column</span>=<span class="string">"t_name"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"tage"</span> <span class="attr">column</span>=<span class="string">"t_sex"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--注意:多对多情况下慎用级联删除,可能会出现删除不需要删除的对象--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"students"</span> <span class="attr">table</span>=<span class="string">"tea_stu_ref"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"tea_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"Student"</span> <span class="attr">column</span>=<span class="string">"stu_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">many-to-many</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        理解 : 因为维护了多的一方的集合,肯定要知道多的一方对应的实体类(!!必须配置实体类名)</span></span><br><span class="line"><span class="comment">            : 多的一方怎么跟我建立起关系的呢?因为它引用了我的主键作为它的外键(!!必须要知道外键对应的字段)</span></span><br><span class="line"><span class="comment">           : 因为已经指定了实体类,而实体类已经通过映射配置文件为其配置了对应的表名,因此表名可有可无</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="comment">&lt;!--指定命名空间,从hibernate-core-5.2.16.Final包中找--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.lee.many2many"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Student"</span> <span class="attr">table</span>=<span class="string">"hb_student"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"sid"</span> <span class="attr">column</span>=<span class="string">"s_id"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--主键自增长,使用数据库本地的自增长能力--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sname"</span> <span class="attr">column</span>=<span class="string">"s_name"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sage"</span> <span class="attr">column</span>=<span class="string">"s_age"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code>    &lt;!--
+    set:用于配置映射的集合属性
+    name:指定当前映射实体类中对应集合属性的属性名称
+    table:指定生成中间表的表名
+    column:当前映射文件对应实体在中间表中的联合主键字段
+    class:指定集合属性所装的实体类型
+    column:指定对方在表中对应的字段名称
+    --&gt;
+
+    &lt;!--注意:多对多情况下慎用级联删除,可能会出现删除不需要删除的对象--&gt;
+    &lt;set name=&quot;teachers&quot; table=&quot;tea_stu_ref&quot;  cascade=&quot;save-update,delete&quot;&gt;
+        &lt;key column=&quot;stu_id&quot;&gt;&lt;/key&gt;
+        &lt;many-to-many class=&quot;Teacher&quot; column=&quot;tea_id&quot;&gt;&lt;/many-to-many&gt;
+    &lt;/set&gt;
+
+    &lt;!--
+    理解 : 因为维护了多的一方的集合,肯定要知道多的一方对应的实体类(!!必须配置实体类名)
+        : 多的一方怎么跟我建立起关系的呢?因为它引用了我的主键作为它的外键(!!必须要知道外键对应的字段)
+       : 因为已经指定了实体类,而实体类已经通过映射配置文件为其配置了对应的表名,因此表名可有可无
+     --&gt;
+&lt;/class&gt;
+</code></pre><p></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Teacher实体对应的数据库表</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE hibernate-mapping PUBLIC</span><br><span class="line">        &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;</span><br><span class="line">        &quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt;</span><br><span class="line">&lt;hibernate-mapping package=&quot;com.lee.many2many&quot;&gt;</span><br><span class="line">    &lt;class name=&quot;Teacher&quot; table=&quot;hb_teacher&quot;&gt;</span><br><span class="line">        &lt;id name=&quot;tid&quot; column=&quot;t_id&quot;&gt;</span><br><span class="line">            &lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</span><br><span class="line">        &lt;/id&gt;</span><br><span class="line"></span><br><span class="line">        &lt;property name=&quot;tname&quot; column=&quot;t_name&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;tage&quot; column=&quot;t_sex&quot;&gt;&lt;/property&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!--注意:多对多情况下慎用级联删除,可能会出现删除不需要删除的对象--&gt;</span><br><span class="line">        &lt;set name=&quot;students&quot; table=&quot;tea_stu_ref&quot;&gt;</span><br><span class="line">            &lt;key column=&quot;tea_id&quot;&gt;&lt;/key&gt;</span><br><span class="line">            &lt;many-to-many class=&quot;Student&quot; column=&quot;stu_id&quot;&gt;&lt;/many-to-many&gt;</span><br><span class="line">        &lt;/set&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--</span><br><span class="line">        理解 : 因为维护了多的一方的集合,肯定要知道多的一方对应的实体类(!!必须配置实体类名)</span><br><span class="line">            : 多的一方怎么跟我建立起关系的呢?因为它引用了我的主键作为它的外键(!!必须要知道外键对应的字段)</span><br><span class="line">           : 因为已经指定了实体类,而实体类已经通过映射配置文件为其配置了对应的表名,因此表名可有可无</span><br><span class="line">         --&gt;</span><br><span class="line">    &lt;/class&gt;</span><br><span class="line">&lt;/hibernate-mapping&gt;</span><br></pre></td></tr></table></figure>
 <p>​</p>
+</li>
+<li><p>延迟加载思想</p>
+</li>
+<li><p>导航查询思想</p>
+</li>
+<li><p>load方法和get方法的区别,get方法立即查询.get方法取决于当前实体类映射配置文件中<code>&lt;calss&gt;</code>标签中的lazy属性,true表示延迟加载.</p>
 </li>
 </ul>
 
@@ -505,6 +510,8 @@
           
             <a href="/tags/错误解决/" rel="tag"><i class="fa fa-tag"></i> 错误解决</a>
           
+            <a href="/tags/Hibernate/" rel="tag"><i class="fa fa-tag"></i> Hibernate</a>
+          
         </div>
       
 
@@ -526,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/06/Java中的Pattern、Matcher、常用的正则表达式/" rel="prev" title="Java中的Pattern、Matcher、常用的正则表达式">
-                Java中的Pattern、Matcher、常用的正则表达式 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/12/Hibernate学习笔记4/" rel="prev" title="Hibernate学习笔记4">
+                Hibernate学习笔记4 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +616,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -620,7 +627,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -631,7 +638,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -741,7 +748,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.5k字</span>
+  <span class="post-count">博客全站共12.2k字</span>
 </div>
 
         
