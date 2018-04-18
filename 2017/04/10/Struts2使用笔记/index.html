@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机,其他," />
+  <meta name="keywords" content="学习日记,错误解决,Struts2," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="今天在做爬虫的时候,需要匹配下面Title中的内容,发现写的正则表达式question_link(.)&amp;gt;(\n)(.+)(\n*)&amp;lt;竟然匹配不上里面的中文,原来在win系统中文件中的换行其实包含了两个字符, /CR(回车),/LF(换行),这两个”.”都是匹配不上的. 123&amp;lt;h2&amp;gt;&amp;lt;a class=&quot;question_link&quot; href=&quot;/question/27">
-<meta name="keywords" content="计算机,其他">
+<meta name="description" content="Struts2使用笔记 配置文件的加载顺序 struts.xml -&amp;gt; struts.properties -&amp;gt; web.xml 这三个文件都是可以修改 struts2常量的值，但是后面的重复的值会覆盖前面的值  在上面三个文件中都是可以配置常量值的  通常在struts.xml中配置常量或者其他的Action,项目比较大时,难免臃肿,此时可以使用include标签来引入其他的xml配">
+<meta name="keywords" content="学习日记,错误解决,Struts2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="回车和换行">
-<meta property="og:url" content="https://blueleer.github.io/2018/04/07/回车和换行/index.html">
+<meta property="og:title" content="Struts2使用重点笔记">
+<meta property="og:url" content="https://blueleer.github.io/2017/04/10/Struts2使用笔记/index.html">
 <meta property="og:site_name" content="Coding...Coding...">
-<meta property="og:description" content="今天在做爬虫的时候,需要匹配下面Title中的内容,发现写的正则表达式question_link(.)&amp;gt;(\n)(.+)(\n*)&amp;lt;竟然匹配不上里面的中文,原来在win系统中文件中的换行其实包含了两个字符, /CR(回车),/LF(换行),这两个”.”都是匹配不上的. 123&amp;lt;h2&amp;gt;&amp;lt;a class=&quot;question_link&quot; href=&quot;/question/27">
+<meta property="og:description" content="Struts2使用笔记 配置文件的加载顺序 struts.xml -&amp;gt; struts.properties -&amp;gt; web.xml 这三个文件都是可以修改 struts2常量的值，但是后面的重复的值会覆盖前面的值  在上面三个文件中都是可以配置常量值的  通常在struts.xml中配置常量或者其他的Action,项目比较大时,难免臃肿,此时可以使用include标签来引入其他的xml配">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-07T17:06:23.583Z">
+<meta property="og:updated_time" content="2018-04-18T16:28:16.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="回车和换行">
-<meta name="twitter:description" content="今天在做爬虫的时候,需要匹配下面Title中的内容,发现写的正则表达式question_link(.)&amp;gt;(\n)(.+)(\n*)&amp;lt;竟然匹配不上里面的中文,原来在win系统中文件中的换行其实包含了两个字符, /CR(回车),/LF(换行),这两个”.”都是匹配不上的. 123&amp;lt;h2&amp;gt;&amp;lt;a class=&quot;question_link&quot; href=&quot;/question/27">
+<meta name="twitter:title" content="Struts2使用重点笔记">
+<meta name="twitter:description" content="Struts2使用笔记 配置文件的加载顺序 struts.xml -&amp;gt; struts.properties -&amp;gt; web.xml 这三个文件都是可以修改 struts2常量的值，但是后面的重复的值会覆盖前面的值  在上面三个文件中都是可以配置常量值的  通常在struts.xml中配置常量或者其他的Action,项目比较大时,难免臃肿,此时可以使用include标签来引入其他的xml配">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://blueleer.github.io/2018/04/07/回车和换行/"/>
+  <link rel="canonical" href="https://blueleer.github.io/2017/04/10/Struts2使用笔记/"/>
 
 
 
 
 
-  <title>回车和换行 | Coding...Coding...</title>
+  <title>Struts2使用重点笔记 | Coding...Coding...</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blueleer.github.io/2018/04/07/回车和换行/">
+    <link itemprop="mainEntityOfPage" href="https://blueleer.github.io/2017/04/10/Struts2使用笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KingIsHappy">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">回车和换行</h1>
+          <h1 class="post-title" itemprop="name headline">Struts2使用重点笔记</h1>
         
 
         <div class="post-meta">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T11:43:40+08:00">
-                2018-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T20:53:33+08:00">
+                2017-04-10
               </time>
             
 
@@ -341,28 +341,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -396,18 +374,113 @@
       
 
       
-        <p>今天在做爬虫的时候,需要匹配下面Title中的内容,发现写的正则表达式<strong>question_link(.<em>)&gt;(\n</em>)(.+)(\n*)&lt;</strong>竟然匹配不上里面的中文,原来在win系统中文件中的换行其实包含了两个字符, <strong>/CR(回车),/LF(换行)</strong>,这两个”.”都是匹配不上的.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"question_link"</span> <span class="attr">href</span>=<span class="string">"/question/270597366/answer/355546388"</span> <span class="attr">data-id</span>=<span class="string">"22407872"</span> <span class="attr">data-za-element-name</span>=<span class="string">"Title"</span>&gt;</span></span><br><span class="line">如何看待星巴克被指含有致癌物质（丙烯酰胺Acrylamide）？</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>修改成下面,成功匹配</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">question_link(.*)&gt;(\r)(\n)(.*)</span><br></pre></td></tr></table></figure>
-<p>完整代码为:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 其中这段是从文件中摘录的,文件中查看特殊符号显示了换行包含两个字符 一个回车一个换行</span></span><br><span class="line">String s = <span class="string">"&lt;h2&gt;&lt;a class="</span>question_link<span class="string">" href="</span>/question/<span class="number">270597366</span>/answer/<span class="number">355546388</span><span class="string">" data-id="</span><span class="number">22407872</span><span class="string">" data-za-element-name="</span>Title<span class="string">"&gt;</span></span><br><span class="line"><span class="string">如何看待星巴克被指含有致癌物质（丙烯酰胺Acrylamide）？</span></span><br><span class="line"><span class="string">&lt;/a&gt;&lt;/h2&gt;"</span></span><br><span class="line">    </span><br><span class="line">String regex = <span class="string">"question_link(.*)&gt;(\\r)(\\n)(.*)"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(regex);</span><br><span class="line">Matcher matcher = pattern.matcher(sb.toString());</span><br><span class="line">matcher.find();</span><br><span class="line">String group = matcher.group(<span class="number">4</span>);</span><br><span class="line">System.out.println(group);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出:</span></span><br><span class="line"><span class="comment">// 如何看待星巴克被指含有致癌物质（丙烯酰胺Acrylamide）？</span></span><br></pre></td></tr></table></figure>
-<p>小示例:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"\r1234\r567"</span>;</span><br><span class="line">String s2 = <span class="string">"\n12345"</span>;</span><br><span class="line">System.out.println(s1);</span><br><span class="line">System.out.println(s2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出:</span></span><br><span class="line"><span class="number">567</span></span><br><span class="line"></span><br><span class="line"><span class="number">12345</span></span><br></pre></td></tr></table></figure>
-<p><strong>再次强调,回车和换行,”.”都不能匹配</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"\r1234\r567"</span>;</span><br><span class="line">String regex = <span class="string">".*"</span>;</span><br><span class="line">String regex1 = <span class="string">"\\r.*"</span>;</span><br><span class="line">Pattern pattern = Pattern.compile(regex1); <span class="comment">// 换成regex则下面的输出为空,也就是不能匹配</span></span><br><span class="line">Matcher matcher = pattern.matcher(s1);</span><br><span class="line">matcher.find();</span><br><span class="line">System.out.println(matcher.group());</span><br></pre></td></tr></table></figure>
-<p>更多知识请参考:</p>
-<p><a href="https://blog.csdn.net/fanwenbo/article/details/54848429" target="_blank" rel="noopener">终于搞懂了回车与换行的区别</a></p>
+        <h2 id="Struts2使用笔记"><a href="#Struts2使用笔记" class="headerlink" title="Struts2使用笔记"></a>Struts2使用笔记</h2><ul>
+<li><p>配置文件的加载顺序</p>
+<p>struts.xml -&gt; struts.properties -&gt; web.xml</p>
+<p>这三个文件都是可以修改 <code>struts2</code>常量的值，但是后面的重复的值会覆盖前面的值</p>
+</li>
+<li><p>在上面三个文件中都是可以配置常量值的</p>
+</li>
+<li><p>通常在struts.xml中配置常量或者其他的Action,项目比较大时,难免臃肿,此时可以使用include标签来引入其他的xml配置文件,其格式遵循struts.xml文件的格式</p>
+</li>
+<li><p>在struts.xml中配置action的三种方式:</p>
+<ul>
+<li><p>指定method</p>
+</li>
+<li><p>通过通配符”*”匹配</p>
+</li>
+<li><p>动态方法访问,注意:struts2.5以后默认关闭,需要配置打开,同时在package中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">global-allowed-methods</span>&gt;</span>regex:.*<span class="tag">&lt;/<span class="name">global-allowed-methods</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><hr>
+<p>结果页面配置</p>
+<ul>
+<li><p>局部结果页面配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"user_*"</span> <span class="attr">class</span>=<span class="string">"com.lee.struts2test.UserController"</span> <span class="attr">method</span>=<span class="string">"&#123;1&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"login_success"</span>&gt;</span></span><br><span class="line">        /index.jsp</span><br><span class="line">    <span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"regist_success"</span>&gt;</span></span><br><span class="line">        /login.jsp</span><br><span class="line">    <span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>是在action中配置</p>
+</li>
+<li><p>全局结果页面配置</p>
+<p>全局结果页面展示必须放在局部的action标签之前</p>
+</li>
+<li><p><code>result</code>标签中的type属性</p>
+<ul>
+<li>dispatcher:转发,默认</li>
+<li>redirect:重定向</li>
+</ul>
+</li>
+<li><p>​</p>
+</li>
+</ul>
+</li>
+<li><p>Action中常用的两个类</p>
+<ul>
+<li>ActionContext</li>
+<li>ServletActionContext</li>
+</ul>
+</li>
+<li><p>ServletRequestAware接口,在方法中获取HttpServletRequest对象</p>
+</li>
+<li><p>表单数据的封装</p>
+<ul>
+<li>原始方法,得到request中的参数</li>
+<li>属性封装<ul>
+<li>提供Entity中的属性和get/set方法,Action会自动调用给属性赋值(获取表单数据到成员变量里面,不能把数据直接封装到实体类里面)</li>
+<li>表达式封装,在页面通过使用user.userName分方式来设置表单的name属性(在Action中必须提供get方法,返回user为属性名的一个实体)</li>
+</ul>
+</li>
+<li>模型驱动封装<ul>
+<li>可以直接把表单数据封装到实体类里面,一个Action类中只能有一个实体类对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用表达式封装,可以将数据封装到List或者Map中</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+<ol>
+<li><strong>配置的时候,<code>Intellij</code>自动生成了全局过滤器</strong></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>struts2<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>struts2<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</span><br></pre></td></tr></table></figure>
+<p>爆红,原来如果jar包确认没问题的话,检查你的Struts2版本,如果是2.5版本以上的话,将<strong>.ng</strong>去掉,我的是2.5.14.1,修改成</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>struts2<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p><strong>使用通配符”*”配置<code>struts.xml</code>中的action访问路径的时候,运行时出现异常,action映射的方法没有找到,解决办法:</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"customer_*"</span> <span class="attr">class</span>=<span class="string">"com.lee.crm.customer.action.CustomerAction"</span> <span class="attr">method</span>=<span class="string">"&#123;1&#125;"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--添加客户--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"add_success"</span>&gt;</span>/jsp/success.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"add_error"</span>&gt;</span>/jsp/customer/add.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!--客户列表--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"list_success"</span>&gt;</span>/jsp/customer/list.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"list_error"</span>&gt;</span>/jsp/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--更新客户--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"update_success"</span>&gt;</span>/jsp/customer/add.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"update_error"</span>&gt;</span>/jsp/error.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">&lt;!--使用通配符匹配的时候,加上这一句--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">allowed-methods</span>&gt;</span>add,list,update<span class="tag">&lt;/<span class="name">allowed-methods</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>加上<code>&lt;allowed-methods&gt;add,list,update&lt;/allowed-methods&gt;</code></p>
+<ol start="3">
+<li><p><strong>使用模型驱动封装表单数据,在需要对表单对应的实体进行更新的时候</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span> <span class="keyword">implements</span> <span class="title">ModelDriven</span>&lt;<span class="title">Customer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Customer <span class="title">getModel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> customer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">preUpdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获取custid</span></span><br><span class="line">        String custId = ServletActionContext.getRequest().getParameter(<span class="string">"custId"</span>);</span><br><span class="line">        Customer customer = mCustomerService.findCustomerById(Long.parseLong(custId));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将customer对象设置到值栈中,更新model对象,回显</span></span><br><span class="line">        <span class="keyword">this</span>.customer = customer;</span><br><span class="line"><span class="comment">//        ActionContext.getContext().getValueStack().push(this.customer);</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"pre_update_success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现从ValueStack中获取的值依然是更新之前的值.这是由于action中的customer的确是更新了,但是valuestack中的值依然是旧值,而在页面中通过<code>&lt;s:property value=&#39;custId&#39; /&gt;</code>获取的也是旧值</p>
+<p>解决办法有多种,这里介绍两种常用的方法:</p>
+<ul>
+<li><p>第一种:</p>
+<p><code>ActionContext.getContext().getValueStack().push(this.customer);</code></p>
+<p>将新的值压入栈顶,页面获取的就是新的对象的值了</p>
+</li>
+<li><p>第二种:</p>
+<p>在相应的action标签中加入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"customer_*"</span> <span class="attr">class</span>=<span class="string">"com.lee.crm.customer.action.CustomerAction"</span> <span class="attr">method</span>=<span class="string">"&#123;1&#125;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">interceptor-ref</span> <span class="attr">name</span>=<span class="string">"defaultStack"</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 渲染页面前刷新model在ValueStack的root的引用 --&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--这样在valuestack中会自动压入一个新的值,跟手动调用push方法是一样的--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"modelDriven.refreshModelBeforeResult"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">interceptor-ref</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同时在action中给对象赋上新的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.customer = customer;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="4">
+<li>ValueStack压入的对象是以对象的属性名作为key,属性值作为value存贮在map中的,所以在页面中取值的时候直接通过Property Name取值,具体可以多用用&lt;s:debug&gt;&lt;s:debug&gt;标签看看<code>Value Stack Contents</code>中值的存放形式</li>
+</ol>
+</li>
+</ol>
 
       
     </div>
@@ -425,9 +498,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机/" rel="tag"><i class="fa fa-tag"></i> 计算机</a>
+            <a href="/tags/学习日记/" rel="tag"><i class="fa fa-tag"></i> 学习日记</a>
           
-            <a href="/tags/其他/" rel="tag"><i class="fa fa-tag"></i> 其他</a>
+            <a href="/tags/错误解决/" rel="tag"><i class="fa fa-tag"></i> 错误解决</a>
+          
+            <a href="/tags/Struts2/" rel="tag"><i class="fa fa-tag"></i> Struts2</a>
           
         </div>
       
@@ -440,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/06/hexo主题之next主题的配置/" rel="next" title="hexo主题之next主题的配置">
-                <i class="fa fa-chevron-left"></i> hexo主题之next主题的配置
+              <a href="/2017/04/09/Hibernate学习笔记2/" rel="next" title="Hibernate学习笔记2">
+                <i class="fa fa-chevron-left"></i> Hibernate学习笔记2
               </a>
             
           </div>
@@ -450,8 +525,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/08/SSH框架学习之Struts2-第一天/" rel="prev" title="SSH框架学习之Struts2--第一天">
-                SSH框架学习之Struts2--第一天 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/10/Hibernate学习笔记3/" rel="prev" title="Hibernate学习笔记3">
+                Hibernate学习笔记3 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,8 +579,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -592,6 +676,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Struts2使用笔记"><span class="nav-number">1.</span> <span class="nav-text">Struts2使用笔记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
