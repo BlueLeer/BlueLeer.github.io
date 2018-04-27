@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Coding...Coding...">
 <meta property="og:description" content="Hibernate–4JPA(Java Persistence API)：Java持久化API,用于规范ORM接口的一系列规范。 Hibernate中实现了JPA规范 配置 项目引入jpa配置（persistence.xml） 123456789101112131415&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;persistence xmln">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-13T12:10:38.107Z">
+<meta property="og:updated_time" content="2018-04-27T09:45:54.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hibernate学习笔记4">
 <meta name="twitter:description" content="Hibernate–4JPA(Java Persistence API)：Java持久化API,用于规范ORM接口的一系列规范。 Hibernate中实现了JPA规范 配置 项目引入jpa配置（persistence.xml） 123456789101112131415&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;persistence xmln">
@@ -414,6 +414,7 @@
 </code></pre><h2 id="一对多关系配置"><a href="#一对多关系配置" class="headerlink" title="一对多关系配置"></a>一对多关系配置</h2></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">* 实体类中的配置(包含表之间一对多映射配置)</span><br><span class="line"></span><br><span class="line">  一对多关系中的<span class="string">"一"</span>的一方实体类配置</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Entity</span></span><br><span class="line">  <span class="meta">@Table</span>(name = <span class="string">"hb_landlord"</span>)</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Landlord</span> </span>&#123;</span><br><span class="line">      <span class="meta">@Id</span></span><br><span class="line">      <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">      <span class="meta">@Column</span>(name = <span class="string">"l_id"</span>)</span><br><span class="line">      <span class="keyword">private</span> Integer lid;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Column</span>(name = <span class="string">"l_name"</span>)</span><br><span class="line">      <span class="keyword">private</span> String lname;</span><br><span class="line"></span><br><span class="line">      <span class="meta">@Column</span>(name = <span class="string">"l_sex"</span>)</span><br><span class="line">      <span class="keyword">private</span> String lsex;</span><br><span class="line">      <span class="meta">@Column</span>(name = <span class="string">"l_age"</span>)</span><br><span class="line">      <span class="keyword">private</span> Integer lage;</span><br><span class="line">      <span class="meta">@Column</span>(name = <span class="string">"l_phone"</span>)</span><br><span class="line">      <span class="keyword">private</span> String lphone;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 参数解释:</span></span><br><span class="line">      <span class="comment">// targetEntity:表示对应的"多"的一方的字节码文件,也可以不加</span></span><br><span class="line">      <span class="comment">// mappedBy:从表中引用的该实体属性名,如果配置了该项,表示放弃维护和从表之间的关联关系.在一对多配置中,一般"一"的一方会配置上该属性;如果没有配置该属性,会生成第三张表(类似于多对多中的中间表)来维护他们之间的关系</span></span><br><span class="line">      <span class="comment">// fetch:配置tenants的加载方式, OneToMany中fetch的默认值为LAZY</span></span><br><span class="line">      <span class="comment">// 还有其他属性:cascade:级联操作</span></span><br><span class="line">      <span class="meta">@OneToMany</span>(targetEntity = Tenant.class, fetch = FetchType.LAZY, mappedBy = <span class="string">"landlord"</span>)</span><br><span class="line">      <span class="keyword">private</span> Set&lt;Tenant&gt; tenants = <span class="keyword">new</span> HashSet&lt;&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 省略默认构造方法,get/set方法,toString()方法</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意:属性级别的注解，都是放在其对应的getter前。</strong></p>
 <p>  一对多中”多”的一方的实体类配置</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"hb_tenant"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tenant</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"t_id"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer tid;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"t_name"</span>)</span><br><span class="line">    <span class="keyword">private</span> String tname;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"t_sex"</span>)</span><br><span class="line">    <span class="keyword">private</span> String tsex;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"t_age"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer tage;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"t_phone"</span>)</span><br><span class="line">    <span class="keyword">private</span> String tphone;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"t_job"</span>)</span><br><span class="line">    <span class="keyword">private</span> String tjob; <span class="comment">// 从事的工作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一位租户只能有一个房东,建立关系</span></span><br><span class="line">    <span class="meta">@ManyToOne</span>(targetEntity = Landlord.class, fetch = FetchType.LAZY)</span><br><span class="line">    <span class="comment">// 用于配置外键,如果不配置也会默认生成(最好自己配上,生成的外键字段可读性更好)</span></span><br><span class="line">    <span class="meta">@JoinColumn</span>(name = <span class="string">"land_tenant_fk"</span>, referencedColumnName = <span class="string">"l_id"</span>) </span><br><span class="line">    <span class="keyword">private</span> Landlord landlord;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 省略默认构造方法,get/set方法,toString()方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="多对多关系配置"><a href="#多对多关系配置" class="headerlink" title="多对多关系配置"></a>多对多关系配置</h2><p>多对多配置以后会生成一个中间表,中间表维护了两个表之间的关系.但是在配置的时候,要分清楚关系维护端(保留关联关系),<strong>任何两个表之间都有主从之分</strong></p>
@@ -466,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/13/JPA概念解析-关联关系的维护/" rel="next" title="JPA概念解析-关联关系的维护">
-                <i class="fa fa-chevron-left"></i> JPA概念解析-关联关系的维护
+              <a href="/2017/04/26/SSH项目搭建记录/" rel="next" title="SSH项目搭建记录(基于Maven)">
+                <i class="fa fa-chevron-left"></i> SSH项目搭建记录(基于Maven)
               </a>
             
           </div>
@@ -559,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -570,7 +571,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -581,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -691,7 +692,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共15.5k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
 
         

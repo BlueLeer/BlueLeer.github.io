@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Coding...Coding...">
 <meta property="og:description" content="Struts2使用笔记 配置文件的加载顺序 struts.xml -&amp;gt; struts.properties -&amp;gt; web.xml 这三个文件都是可以修改 struts2常量的值，但是后面的重复的值会覆盖前面的值  在上面三个文件中都是可以配置常量值的  通常在struts.xml中配置常量或者其他的Action,项目比较大时,难免臃肿,此时可以使用include标签来引入其他的xml配">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T16:28:16.801Z">
+<meta property="og:updated_time" content="2018-04-27T06:15:10.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struts2使用重点笔记">
 <meta name="twitter:description" content="Struts2使用笔记 配置文件的加载顺序 struts.xml -&amp;gt; struts.properties -&amp;gt; web.xml 这三个文件都是可以修改 struts2常量的值，但是后面的重复的值会覆盖前面的值  在上面三个文件中都是可以配置常量值的  通常在struts.xml中配置常量或者其他的Action,项目比较大时,难免臃肿,此时可以使用include标签来引入其他的xml配">
@@ -460,7 +460,7 @@
 </ol>
 <p>加上<code>&lt;allowed-methods&gt;add,list,update&lt;/allowed-methods&gt;</code></p>
 <ol start="3">
-<li><p><strong>使用模型驱动封装表单数据,在需要对表单对应的实体进行更新的时候</strong></p>
+<li><p>使用模型驱动封装表单数据,在需要对表单对应的实体进行更新的时候**</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span> <span class="keyword">implements</span> <span class="title">ModelDriven</span>&lt;<span class="title">Customer</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Customer <span class="title">getModel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> customer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">preUpdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获取custid</span></span><br><span class="line">        String custId = ServletActionContext.getRequest().getParameter(<span class="string">"custId"</span>);</span><br><span class="line">        Customer customer = mCustomerService.findCustomerById(Long.parseLong(custId));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将customer对象设置到值栈中,更新model对象,回显</span></span><br><span class="line">        <span class="keyword">this</span>.customer = customer;</span><br><span class="line"><span class="comment">//        ActionContext.getContext().getValueStack().push(this.customer);</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"pre_update_success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>发现从ValueStack中获取的值依然是更新之前的值.这是由于action中的customer的确是更新了,但是valuestack中的值依然是旧值,而在页面中通过<code>&lt;s:property value=&#39;custId&#39; /&gt;</code>获取的也是旧值</p>
 <p>解决办法有多种,这里介绍两种常用的方法:</p>
@@ -477,7 +477,20 @@
 </li>
 </ul>
 <ol start="4">
-<li>ValueStack压入的对象是以对象的属性名作为key,属性值作为value存贮在map中的,所以在页面中取值的时候直接通过Property Name取值,具体可以多用用&lt;s:debug&gt;&lt;s:debug&gt;标签看看<code>Value Stack Contents</code>中值的存放形式</li>
+<li><p>ValueStack压入的对象是以对象的属性名作为key,属性值作为value存贮在map中的,所以在页面中取值的时候直接通过Property Name取值,具体可以多用用&lt;s:debug&gt;&lt;s:debug&gt;标签看看<code>Value Stack Contents</code>中值的存放形式</p>
+</li>
+<li><p>在使用struts.xml文件时，经常因为格式导致不必要的错误。<br>例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"default"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span> <span class="attr">namespace</span>=<span class="string">"/namespace1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"initFStree"</span> <span class="attr">class</span>=<span class="string">"InitFStree"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"success"</span>&gt;</span>pages/initFStree.jsp<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>说明：</p>
+<ol>
+<li>namespace=”?”     ? : 需要以‘/‘开头，否则使用默认的namespace，即‘/‘</li>
+<li><result name="success">?</result><br>  ? : <1> 如果以’/‘开始，则路径为相对于web根目录的路径<pre><code>&lt;2&gt; 如果不以&apos;/&apos;开始，则路径为相对于namespace的路径
+例：如上述代码的所表示的路径：/webroot/namespace1/pages/initFStree.jsp,如果你的文件在/webroot/pages/initFStree.jsp，则浏览器会显示找不到指定文件。
+</code></pre></1></li>
+<li>如果在jsp页面里有引用相对地址，如：<br><script type="text/javascript" src="../jquey/jquery.js"></script><br>src指定的路径为相对于浏览器中URL，及与namespace有关，而于result指定的返回文件的路径无关。</li>
+</ol>
+</li>
 </ol>
 </li>
 </ol>
@@ -515,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/09/Hibernate学习笔记2/" rel="next" title="Hibernate学习笔记2">
-                <i class="fa fa-chevron-left"></i> Hibernate学习笔记2
+              <a href="/2017/04/10/Hibernate学习笔记3/" rel="next" title="Hibernate学习笔记3">
+                <i class="fa fa-chevron-left"></i> Hibernate学习笔记3
               </a>
             
           </div>
@@ -525,8 +538,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/10/Hibernate学习笔记3/" rel="prev" title="Hibernate学习笔记3">
-                Hibernate学习笔记3 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/10/idea中Mark Directory As里的Sources Root、ReSources Root等的区别/" rel="prev" title="idea中Mark Directory As里的Sources Root、ReSources Root等的区别">
+                idea中Mark Directory As里的Sources Root、ReSources Root等的区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -608,7 +621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -619,7 +632,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -630,7 +643,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -740,7 +753,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共15.5k字</span>
+  <span class="post-count">博客全站共24.9k字</span>
 </div>
 
         

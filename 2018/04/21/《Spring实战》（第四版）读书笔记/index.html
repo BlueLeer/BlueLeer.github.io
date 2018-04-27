@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding...Coding..." type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="第1章 Spring之旅两大核心  依赖注入(Dependency injection,DI) 面向切面编程(aspect-oriented-programming,AOP)  发展历程:  创建Spring的主要目的是用来替代更加重量级的企业级Java技术，尤其是EJB。相对于EJB说,Spring提供了更加轻量级和简单的编程模型。它增强了简单老式Java对象（Plain Old Java ob">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Spring实战》（第四版）读书笔记">
+<meta property="og:url" content="https://blueleer.github.io/2018/04/21/《Spring实战》（第四版）读书笔记/index.html">
+<meta property="og:site_name" content="Coding...Coding...">
+<meta property="og:description" content="第1章 Spring之旅两大核心  依赖注入(Dependency injection,DI) 面向切面编程(aspect-oriented-programming,AOP)  发展历程:  创建Spring的主要目的是用来替代更加重量级的企业级Java技术，尤其是EJB。相对于EJB说,Spring提供了更加轻量级和简单的编程模型。它增强了简单老式Java对象（Plain Old Java ob">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="e:/github/MyBlog/source/_posts/《Spring实战》（第四版）读书笔记/Bean的生命周期.png">
+<meta property="og:updated_time" content="2018-04-26T07:16:19.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Spring实战》（第四版）读书笔记">
+<meta name="twitter:description" content="第1章 Spring之旅两大核心  依赖注入(Dependency injection,DI) 面向切面编程(aspect-oriented-programming,AOP)  发展历程:  创建Spring的主要目的是用来替代更加重量级的企业级Java技术，尤其是EJB。相对于EJB说,Spring提供了更加轻量级和简单的编程模型。它增强了简单老式Java对象（Plain Old Java ob">
+<meta name="twitter:image" content="e:/github/MyBlog/source/_posts/《Spring实战》（第四版）读书笔记/Bean的生命周期.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blueleer.github.io/2018/04/21/《Spring实战》（第四版）读书笔记/"/>
+
+
+
+
+
+  <title>《Spring实战》（第四版）读书笔记 | Coding...Coding...</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<!-- 在右上角或者左上角实现fork me on github -->
+    <a href="https://github.com/BlueLeer" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding...Coding...</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blueleer.github.io/2018/04/21/《Spring实战》（第四版）读书笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KingIsHappy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding...Coding...">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《Spring实战》（第四版）读书笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T14:42:36+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第1章-Spring之旅"><a href="#第1章-Spring之旅" class="headerlink" title="第1章 Spring之旅"></a>第1章 Spring之旅</h1><p><strong>两大核心</strong></p>
+<ul>
+<li>依赖注入(Dependency injection,DI)</li>
+<li>面向切面编程(aspect-oriented-programming,AOP)</li>
+</ul>
+<p><strong>发展历程:</strong></p>
+<ul>
+<li>创建Spring的主要目的是用来<strong>替代更加重量级的企业级Java技术</strong>，尤其是EJB。相对于EJB说,Spring提供了更加轻量级和简单的编程模型。它<strong>增强了简单老式Java对象</strong>（Plain Old Java object，POJO）的功能，使<strong>其具备了之前只有EJB和其他企业级Java规范才具有的功能</strong>。</li>
+<li>随着时间的推移，EJB以及Java 2企业版（Java 2 Enterprise Edition，J2EE）在不断演化。EJB自身也提供了面向简单POJO的编程模型。现在，EJB也采用了依赖注入（Dependency Injection，DI）和面向切面编程（Aspect-Oriented Programming，AOP）的理念，这毫无疑问是受到Spring成功的启发。</li>
+<li>尽管J2EE（现在称之为JEE）能够赶上Spring的步伐，但Spring也没有停止前进。Spring继续在其他领域发展，而JEE则刚刚开始涉及这些领域，或者还完全没有开始在这些领域的创新。移动开发、社交API集成、NoSQL数据库、云计算以及大数据都是Spring正在涉足和创新的领域。Spring的前景依然会很美好。</li>
+</ul>
+<h2 id="1-1-简化Java开发"><a href="#1-1-简化Java开发" class="headerlink" title="1.1 简化Java开发"></a>1.1 简化Java开发</h2><p>为了降低Java开发的复杂性,Spring采取了下面四种关键性策略</p>
+<ul>
+<li>基于POJO的轻量级和最小侵入性编程；</li>
+<li>通过依赖注入和面向接口实现松耦合；</li>
+<li>基于切面和惯例进行声明式编程；</li>
+<li>通过切面和模板减少样板式代码。</li>
+</ul>
+<blockquote>
+<p>POJO:plain old java object,简单老实Java对象。使用POJO名称是为了避免和<a href="https://baike.baidu.com/item/EJB" target="_blank" rel="noopener">EJB</a>混淆起来, 而且简称比较直接. 其中<strong>有一些属性及其getter setter方法的类,没有业务逻辑</strong>，有时可以作为<a href="https://baike.baidu.com/item/VO" target="_blank" rel="noopener">VO</a>(value -object)或<a href="https://baike.baidu.com/item/dto" target="_blank" rel="noopener">dto</a>(Data Transform Object)来使用.当然,如果你有一个简单的运算属性也是可以的,但不允许有业务方法,也不能携带有connection之类的方法。</p>
+</blockquote>
+<h3 id="1-1-1-基于POJO的轻量级和最小侵入性编程"><a href="#1-1-1-基于POJO的轻量级和最小侵入性编程" class="headerlink" title="1.1.1 基于POJO的轻量级和最小侵入性编程"></a>1.1.1 基于POJO的轻量级和最小侵入性编程</h3><p><strong>侵入式框架</strong>：框架通过强迫应用继承它们的类或实现它们的接口从而导致应用与框架绑死。例如：struts框架。</p>
+<p><strong>非侵入式框架</strong>：不会强迫的让你继承框架提供的类或者接口，你一样可以使用，简而言之，拿来即用，不用去修改你原来的代码。例如：Hibernate框架，Spring框架等等。</p>
+<h3 id="1-1-2-通过依赖注入和面向接口实现松耦合"><a href="#1-1-2-通过依赖注入和面向接口实现松耦合" class="headerlink" title="1.1.2 通过依赖注入和面向接口实现松耦合"></a>1.1.2 通过依赖注入和面向接口实现松耦合</h3><p>Spring通过应用上下文（Application Context）装载bean的定义并把它们组装起来。Spring应用上下文全权负责对象的创建和组装。Spring自带了多种应用上下文的实现，它们之间主要的区别仅仅在于如何加载配置。</p>
+<h3 id="1-1-3-基于切面和惯例进行声明式编程（应用切面）"><a href="#1-1-3-基于切面和惯例进行声明式编程（应用切面）" class="headerlink" title="1.1.3 基于切面和惯例进行声明式编程（应用切面）"></a>1.1.3 基于切面和惯例进行声明式编程（应用切面）</h3><p><strong>面向切面编程（aspect-oriented programming，AOP）允许你把遍布应用各处的功能分离出来形成可重用的组件。</strong></p>
+<p>面向切面编程往往被定义为促使软件系统实现关注点的分离一项技术。<strong>系统由许多不同的组件组成，每一个组件各负责一块特定功能。除了实现自身核心的功能之外，这些组件还经常承担着额外的职责。诸如日志、事务管理和安全这样的系统服务经常融入到自身具有核心业务逻辑的组件中去，这些系统服务通常被称为横切关注点，因为它</strong><br><strong>们会跨越系统的多个组件。</strong></p>
+<p><strong>横切关注点 ：这些系统服务通常被称为横切关注点，因为他们会跨越系统的多个组件</strong></p>
+<p><strong>如果将这些关注点分散到多个组件中去，你的代码将会带来双重的复杂性。</strong></p>
+<ul>
+<li>实现系统关注点功能的代码将会重复出现在多个组件中。这意味着如果你要改变这些关注点的逻辑，必须修改各个模块中的相关实现。即使你把这些关注点抽象为一个独立的模块，其他模块只是调用它的方法，但方法的调用还是会重复出现在各个模块中。组件会因为那些与自身核心业务无关的代码而变得混乱。一个向地址簿增加地址条目的方法应该只关注如何添加地址，而不应该关注它是不是安全的或者是否需要支持事务。</li>
+</ul>
+<p><strong>使用AOP的好处：</strong></p>
+<p>借助AOP，可以使用各种功能层去包裹核心业务层。这些层以声明的方式灵活地应用到系统中，你的核心应用甚至根本不知道它们的存在。这是一个非常强大的理念，可以将安全、事务和日志关注点与核心业务逻辑相分离。</p>
+<h3 id="1-1-4-使用模板消除样板式代码"><a href="#1-1-4-使用模板消除样板式代码" class="headerlink" title="1.1.4 使用模板消除样板式代码"></a>1.1.4 使用模板消除样板式代码</h3><p>Spring旨在通过模板封装来消除样板式代码。例如：<code>Spring</code>的<code>JdbcTemplate</code>使得执行数据库操作时，避免传统的JDBC样板代码成为了可能。（例如：在使用JDBC操作数据库的时候，需要关闭数据库连接，关闭Statement，关闭ResultSet等等这些都是重复性的代码，使用模板将这些重复性的代码封装到了模板中）</p>
+<h2 id="1-2-Spring容器"><a href="#1-2-Spring容器" class="headerlink" title="1.2 Spring容器"></a>1.2 Spring容器</h2><p>简单来说就是装JavaBean的容器，统一管理，按需装配（使用依赖注入的方式）。</p>
+<p><strong>它是Spring框架的核心。</strong>Spring容器使用DI管理构成应用的组件，它会创建相互协作的组件之间的关联。毫无疑问，这些对象更简单干净，更易于理解，更易于重用并且更易于进行单元测试。</p>
+<p>Spring容器分为两种类型：</p>
+<ul>
+<li><strong>Bean工厂</strong> 实现<code>org.springframework. beans.factory.BeanFactory</code>接口，是最简单的容器，提供基本的DI支持.</li>
+<li><strong>应用上下文</strong> <strong>(ApplicationContext)</strong> 实现<code>org.springframework.context.ApplicationContext</code>接口,它是基于Bean工厂实现的,并提供应用框架级别的服务，例如从属性文件解析文本信息以及发布应用事件给感兴趣的事件监听者。</li>
+</ul>
+<p>Bean工厂功能态单一,所以大多数选用<code>ApplicationContext</code></p>
+<h3 id="1-2-1-使用应用上下文"><a href="#1-2-1-使用应用上下文" class="headerlink" title="1.2.1 使用应用上下文"></a>1.2.1 使用应用上下文</h3><p>常用的应用上下文:</p>
+<ul>
+<li><strong>AnnotationConfigApplicationContext</strong>：从一个或多个基于Java的配置类中加载Spring应用上下文。</li>
+</ul>
+<ul>
+<li><strong>AnnotationConfigWebApplicationContext</strong>：从一个或多个基于Java的配置类中加载Spring Web应用上下文。</li>
+</ul>
+<ul>
+<li><strong>ClassPathXmlApplicationContext</strong>：从类路径下的一个或多个XML配置文件中加载上下文定义，把应用上下文的定义文件作为类资源。</li>
+</ul>
+<ul>
+<li><strong>FileSystemXmlapplicationcontext</strong>：从文件系统下的一个或多个XML配置文件中加载上下文定义。</li>
+<li><strong>XmlWebApplicationContext</strong>：从Web应用下的一个或多个XML配置文件中加载上下文定义。</li>
+</ul>
+<p>使用<code>FileSystemXmlApplicationContext</code>和使用<code>ClassPathXmlApp-licationContext</code>的区别在于：<code>FileSystemXmlApplicationContext</code>在指定的文件系统路径下查找<code>bean.xml</code>文件；而<code>ClassPathXmlApplicationContext</code>是在所有的类路径（包含JAR文件）下查找 <code>bean.xml</code>文件。</p>
+<p>这里需要注意的是:使用 “classpath*:”和”classpath:”的区别</p>
+<h3 id="1-2-2-Bean的生命周期"><a href="#1-2-2-Bean的生命周期" class="headerlink" title="1.2.2 Bean的生命周期"></a>1.2.2 Bean的生命周期</h3><p><img src="E:\github\MyBlog\source\_posts\《Spring实战》（第四版）读书笔记\Bean的生命周期.png" alt=""></p>
+<ul>
+<li>1．Spring对bean进行实例化；</li>
+<li>2．Spring将值和bean的引用注入到bean对应的属性中；</li>
+<li>3．如果bean实现了BeanNameAware接口，Spring将bean的ID传递给setBean-Name()方法；</li>
+</ul>
+<ul>
+<li>4．如果bean实现了BeanFactoryAware接口，Spring将调用setBeanFactory()方法，将BeanFactory容器实例传入；</li>
+</ul>
+<ul>
+<li>5．如果bean实现了ApplicationContextAware接口，Spring将调用setApplicationContext()方法，将bean所在的应用上下文的引用传入进来；</li>
+</ul>
+<ul>
+<li>6．如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessBeforeInitialization()方法；</li>
+</ul>
+<ul>
+<li>7．如果bean实现了InitializingBean接口，Spring将调用它们的after-PropertiesSet()方法。类似地，如果bean使用initmethod声明了初始化方法，该方法也会被调用；</li>
+</ul>
+<ul>
+<li>8．如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessAfterInitialization()方法；</li>
+</ul>
+<ul>
+<li>9．此时，bean已经准备就绪，可以被应用程序使用了，它们将一直驻留在应用上下文中，直到该应用上下文被销毁；</li>
+</ul>
+<ul>
+<li>10．如果bean实现了DisposableBean接口，Spring将调用它的destroy()接口方法。同样，如果bean使用destroy-method声明了销毁方法，该方法也会被调用。</li>
+</ul>
+<h2 id="1-3-Spring模块"><a href="#1-3-Spring模块" class="headerlink" title="1.3 Spring模块"></a>1.3 Spring模块</h2><h2 id="1-4-Spring新方向"><a href="#1-4-Spring新方向" class="headerlink" title="1.4 Spring新方向"></a>1.4 Spring新方向</h2><ul>
+<li><strong>Spring Boot</strong></li>
+</ul>
+<h2 id="1-5-小节"><a href="#1-5-小节" class="headerlink" title="1.5 小节"></a>1.5 小节</h2><ul>
+<li><p>Spring致力于简化开发,方便维护,其核心是<strong>依赖注入</strong>和<strong>面向切面编程</strong></p>
+</li>
+<li><p>依赖注入,也叫作控制反转。正常情况下类中需要用到的组件都是需要使用自己去new，相当于控制正转。但是它的耦合性太高，不利于维护和测试。而控制反转是我们需要什么组件外界使用我们的时候自己传进来，例如可以通过set方法或者构造器传入。这样，依赖的对象可以有使用者自己去扩展，实现了松耦合。而依赖注入正是控制反转的一种实现。另一方面，使用Spring的依赖注入核心功能使得对象的管理更加清晰。</p>
+</li>
+<li><p>面向切面编程（AOP），是将散落的逻辑，例如日志（在Spring中称作关注点），事务等等，这些功能也不得不使用，将这些逻辑汇聚在一起，形成一个面，也就是一个独立的模块，这样讲这些与核心业务逻辑类分离。一方面能够减少业务逻辑类中的代码量，使其专注自己的逻辑。</p>
+<blockquote>
+<p>AOP可以帮助应用将散落在各处的逻辑汇集于一处——切面。当Spring装配bean的时候，这些切面能够在运行期编织起来，这样就能非常有效地赋予bean新的行为。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="第2章-装配Bean（Bean的配置与获取）"><a href="#第2章-装配Bean（Bean的配置与获取）" class="headerlink" title="第2章 装配Bean（Bean的配置与获取）"></a>第2章 装配Bean（Bean的配置与获取）</h1><blockquote>
+<p>在Spring中，对象无需自己查找或创建与其所关联的其他对象。相反，容器负责把需要相互协作的对象引用赋予各个对象。例如，一个订单管理组件需要信用卡认证组件，但它不需要自己创建信用卡认证组件。订单管理组件只需要表明自己两手空空，容器就会主动赋予它一个信用卡认证组件。</p>
+</blockquote>
+<blockquote>
+<p><strong>创建应用对象之间协作关系的行为通常称为装配（wiring），这也是依赖注入（DI）的本质</strong>。</p>
+</blockquote>
+<h2 id="2-1-Spring容器的配置方式"><a href="#2-1-Spring容器的配置方式" class="headerlink" title="2.1 Spring容器的配置方式"></a>2.1 Spring容器的配置方式</h2><ul>
+<li>在XML中进行显式配置。</li>
+<li>在Java中进行显式配置。</li>
+<li>隐式的bean发现机制和自动装配。</li>
+</ul>
+<p>关于三种配置方式的选择问题:</p>
+<blockquote>
+<p>选择自己喜欢的或者项目适合的配置方式。</p>
+<p>搭配配置也是可以的</p>
+<p>我的建议是尽可能地使用<strong>自动配置的机制</strong>。<strong>显式配置越少越好</strong>。当你必须要显式配置bean的时候（比如，有些源码不是由你来维护的，而当你需要为这些代码配置bean的时候），我推荐使用<strong>类型安全并且比XML更加强大的JavaConfig</strong>。最后，只有当你想要使用便利的XML命名空间，并且在JavaConfig中没有同样的实现时，才应该使用XML。</p>
+</blockquote>
+<p>未完待续…</p>
+<h1 id="第4章-面向切面的Spring-Spring中的AOP"><a href="#第4章-面向切面的Spring-Spring中的AOP" class="headerlink" title="第4章  面向切面的Spring(Spring中的AOP)"></a>第4章  面向切面的Spring(Spring中的AOP)</h1><blockquote>
+<p>软件系统中的一些功能就像我们家里的电表一样。这些功能需要用到应用程序的多个地方，但是我们又不想在每个点都明确调用它们。日志、安全和事务管理的确都很重要，但它们是否为应用对象主动参与的行为呢？<strong>如果让应用对象只关注于自己所针对的业务领域问题，而其他方面的问题由其他应用对象来处理，这会不会更好呢？</strong></p>
+<p><strong>在软件开发中，散布于应用中多处的功能被称为横切关注点</strong>（crosscuttingconcern）。通常来讲，这些<strong>横切关注点从概念上是与应用的业务逻辑相分离的（但是往往会直接嵌入到应用的业务逻辑之中）。把这些横切关注点与业务逻辑相分离正是面向切面编程（AOP）所要解决的问题。</strong></p>
+</blockquote>
+<p>理解：各司其职，例如日志功能呢，虽然我们希望日志系统能够很好的帮我们记日志，但是日志系统的主要工作范畴。他就像财务，是替我们记账的。横切关注点串联起来，可以形成一个完整的面，该面相当于一个分布于应用中的微型系统。例如，日志，错误处理，事务管理等等。</p>
+<blockquote>
+<p><strong>DI有助于应用对象之间的解耦，而AOP可以实现横切关注点与它们所影响的对象之间的解耦。</strong></p>
+</blockquote>
+<h2 id="4-1-什么是面向切面编程"><a href="#4-1-什么是面向切面编程" class="headerlink" title="4.1 什么是面向切面编程"></a>4.1 什么是面向切面编程</h2><p><strong>Spring切面的实现原理</strong></p>
+<blockquote>
+<p>切面提供了取代继承和委托的另一种可选方案，而且在很多场景下更清晰简洁。<strong>在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。**</strong>横切关注点可以被模块化为特殊的类，这些类被称为切面（aspect）<strong>。</strong></p>
+<p><strong>这样做有两个好处：首先，现在每个关注点都集中于一个地方，而不是分散到多处代码中；其次，服务模块更简洁，因为它们只包含主要关注点（或核心功能）的代码，而次要关注点的代码被转移到切面中了。</strong></p>
+</blockquote>
+<h3 id="4-1-1-AOP相关术语"><a href="#4-1-1-AOP相关术语" class="headerlink" title="4.1.1 AOP相关术语"></a>4.1.1 AOP相关术语</h3><ul>
+<li><p><strong>通知（Advice）–也叫增强</strong></p>
+<blockquote>
+<p>通知定义了切面是什么以及何时使用。除了描述切面要完成的工作，通知还解决了何时执行这个工作的问题。它应该应用在某个方法被调用之前？之后？之前和之后都调用？还是只在方法抛出异常时调用？</p>
+</blockquote>
+<p>Spring切面可以应用5种类型的通知：</p>
+<ul>
+<li><strong>前置通知</strong>（Before）：在目标方法被调用之前调用通知功能；</li>
+<li><strong>后置通知</strong>（After）：在目标方法完成之后调用通知，此时不会关心方法的输出是什么；</li>
+</ul>
+</li>
+<li><p><strong>连接点（Join point）</strong></p>
+<blockquote>
+<p>我们的应用可能也有数以千计的时机应用通知。这些时机被称为连接点。连接点是在应用执行过程中能够插入切面的一个点。这个点可以是调用方法时、抛出异常时、甚至修改一个字段时。切面代码可以利用这些点插入到应用的正常流程之中，并添加新的行为。</p>
+</blockquote>
+<p>简单理解就是:所有可以被增强的方法</p>
+<p>​</p>
+</li>
+<li><p><strong>切点（Poincut）</strong></p>
+<blockquote>
+<p>如果说通知定义了切面的“什么”和“何时”的话，那么切点就定义了“何处”。切点的定义会匹配通知所要织入的一个或多个连接点。我们通常使用明确的类和方法名称，或是利用正则表达式定义所匹配的类和方法名称来指定这些切点。有些AOP框架允许我们创建动态的切点，可以根据运行时的决策（比如方法的参数值）来决定是否应用通知。</p>
+</blockquote>
+<p>简单理解:可以被增强的方法有很多个,但是并不是所有的方法都需要被增强,从连接点中选取一部分必要的方法来增强.切点是连接点的子集。</p>
+</li>
+<li><p><strong>切面（Aspect）</strong></p>
+<blockquote>
+<p>切面是通知和切点的结合。通知和切点共同定义了切面的全部内容——它是什么，在何时和何处完成其功能。</p>
+</blockquote>
+<p>简单理解：切面就是通知（增强）和切点编织在一起。他知道在哪里应用增强以及增强的内容。例如：在管理员往数据库中插入一条记录的时候就将插入记录的相关细节记录到日志中去。</p>
+</li>
+<li><p><strong>引入（Introduction）</strong></p>
+<blockquote>
+<p>引入允许我们向现有的类添加新方法或属性。例如，我们可以创建一个Auditable通知类，该类记录了对象最后一次修改时的状态。这很简单，只需一个方法，setLastModified(Date)，和一个实例变量来保存这个状态。然后，这个新方法和实例变量就可以被引入到现有的类中，从而可以在无需修改这些现有的类的情况下，让它们具有新的行为和状态。</p>
+</blockquote>
+</li>
+<li><p><strong>织入（Weaving）</strong></p>
+<blockquote>
+<p>织入是把切面应用到目标对象并创建新的代理对象的过程。切面在指定的连接点被织入到目标对象中。在目标对象的生命周期里有多个点可以进行织入：</p>
+<ul>
+<li>编译期：切面在目标类编译时被织入。这种方式需要特殊的编译器。AspectJ的织入编译器就是以这种方式织入切面的。</li>
+<li>类加载期：切面在目标类加载到JVM时被织入。这种方式需要特殊的类加载器（ClassLoader），它可以在目标类被引入应用之前增强该目标类的字节码。AspectJ 5的加载时织入（load-timeweaving，LTW）就支持以这种方式织入切面。</li>
+<li>运行期：切面在应用运行的某个时刻被织入。一般情况下，在织入切面时，AOP容器会为目标对象动态地创建一个代理对象。<strong>Spring AOP就是以这种方式织入切面的。</strong></li>
+</ul>
+</blockquote>
+<p>简单理解：创建切面的过程</p>
+</li>
+</ul>
+<h3 id="4-1-2-Spring对AOP的支持"><a href="#4-1-2-Spring对AOP的支持" class="headerlink" title="4.1.2 Spring对AOP的支持"></a>4.1.2 Spring对AOP的支持</h3><p><strong>Spring提供了4种类型的AOP支持：</strong></p>
+<ul>
+<li>基于代理的经典Spring AOP；</li>
+<li>纯POJO切面；</li>
+<li>@AspectJ注解驱动的切面；</li>
+<li>注入式AspectJ切面（适用于Spring各版本）。</li>
+</ul>
+<p><strong>前三种都是Spring AOP实现的变体</strong>，Spring AOP构建在动态代理基础之上，因此，Spring对AOP的支持局限于方法拦截。</p>
+<p>Spring中AOP的特点:</p>
+<ul>
+<li><p>Spring在运行时,也就是说当真正的需要被代理的对象时,才创建代理对象.即运行时织入.</p>
+</li>
+<li><p>Spring只支持方法级别的连接点.不支持字段和构造器接入点.</p>
+<blockquote>
+<p>但是方法拦截可以满足绝大部分的需求。如果需要方法拦截之外的连接点拦截功能，那么我们可以利用Aspect来补充Spring AOP的功能。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong>在Spring AOP中，要使用AspectJ的切点表达式语言来定义切点。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>关于Spring AOP的AspectJ切点，最重要的一点就是Spring仅支持AspectJ切点指示器（pointcut designator）的一个子集</strong></p>
+</blockquote>
+<h2 id="4-2-编写切点"><a href="#4-2-编写切点" class="headerlink" title="4.2 编写切点"></a>4.2 编写切点</h2><p>例如: <code>execution(* com.lee.aop.LeeDao.*(..))</code></p>
+<p>说明: </p>
+<ul>
+<li>第一个*代表返回任意类型</li>
+<li>第二个*代表匹配LeeDao类中的所有的方法</li>
+<li>(..)代表任意的参数</li>
+</ul>
+<p>除了execution之外还有以下这些<code>AspectJ指示器</code></p>
+<ul>
+<li><p><code>arg()</code> 限制连接点匹配参数为指定类型的执行方法</p>
+</li>
+<li><p><code>@args()</code>限制连接点匹配参数由指定注解标注的执行方法</p>
+<p>例如: <code>execution(* com.lee.aop.LeeDao.findById(int)) &amp;&amp; args(num)</code>表示当调用findById的时候传入的参数同时会传入到通知方法中去,此时通知方法可以在方法参数列表中指定一个参数用来接收这个参数,必须要保证通知方法参数列表中的参数名称和<code>num</code>名称一致</p>
+</li>
+<li><p><code>execution()</code> 用于匹配是连接点的执行方法</p>
+</li>
+<li><p><code>this()</code>限制连接点匹配AOP代理的bean引用为指定类型的类</p>
+</li>
+<li><p><code>target</code> 限制连接点匹配目标对象为指定类型的类</p>
+</li>
+<li><p><code>@target()</code> 限制连接点匹配特定的执行对象，这些对象对应的类要具有指定类型的注解</p>
+</li>
+<li><p><code>within()</code> 限制连接点匹配指定的类型</p>
+</li>
+<li><p><code>@within()</code> 限制连接点匹配指定注解所标注的类型（当使用Spring AOP时，方法定义在由指定的注解所标注的类里）</p>
+</li>
+<li><p><code>@annotation</code> 限定匹配带有指定注解的连接点</p>
+</li>
+<li><p>Spring还引入了一个新的bean()指示器，它允许我们在切点表达式中使用bean的ID来标识bean。bean()使用bean ID或bean名称作为参数来限制切点只匹配特定的bean。</p>
+<p>例如:<code>execution(* com.lee.aop.LeeDao. *(..)) and bean(&quot;leeDao1&quot;)</code>表示限定的bean的ID为<code>leeDao1</code></p>
+</li>
+</ul>
+<p>使用示例:</p>
+<p><code>execution(* com.lee.aop.LeeDao. *(..)) &amp;&amp;  within(com.lee.*)</code></p>
+<p>解释:<code>&amp;&amp;</code> 表示逻辑与.还有<code>!</code>,表示非.<code>||</code>表示或.响应的都可以使用<code>and</code>,<code>not</code>,<code>or</code>来代替</p>
+<p>​        <code>within</code>表示限制切点仅仅匹配com.lee包下的</p>
+<h2 id="4-3-使用注解创建切面"><a href="#4-3-使用注解创建切面" class="headerlink" title="4.3 使用注解创建切面"></a>4.3 使用注解创建切面</h2><p>在类上进行标注:</p>
+<ul>
+<li><code>@Aspect</code>: 代表该类不仅是一个POJO类,还是一个切面</li>
+</ul>
+<p>在方法上进行标注:代表他们是通知(增强)</p>
+<ul>
+<li><code>@After</code> 通知方法会在目标方法返回或抛出异常后调用</li>
+<li><code>@AfterReturning</code> 通知方法会在目标方法返回后调用</li>
+<li><code>@AfterThrowing</code> 通知方法会在目标方法抛出异常后调用</li>
+<li><code>@Around</code> 通知方法会将目标方法封装起来</li>
+<li><code>@Before</code> 通知方法会在目标方法调用之前执行</li>
+<li><code>@Pointcut</code> 定义一个公用的切点</li>
+</ul>
+<p>需要注意的是<code>@Around</code>环绕通知的使用方法</p>
+<blockquote>
+<p>关于这个新的通知方法，你首先注意到的可能是它接受<strong>ProceedingJoinPoint</strong>作为参数。这个对象是必须要有的，因为你要在通知中通过它来调用被通知的方法。通知方法中可以做任何的事情，当要将控制权交给被通知的方法时，它需要调用<strong>ProceedingJoinPoint</strong>的<strong>proceed()</strong>方法。</p>
+</blockquote>
+<p>​    <em>**</em></p>
+<p><strong>通过注解引入新的功能:</strong></p>
+<blockquote>
+<p>一些编程语言，例如Ruby和Groovy，有开放类的理念。它们可以不用直接修改对象或类的定义就能够为对象或类增加新的方法。不过，Java并不是动态语言。一旦类编译完成了，我们就很难再为该类添加新的功了。</p>
+</blockquote>
+<p>实现方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FoodFruitAppleAspect</span> </span>&#123;</span><br><span class="line">    <span class="comment">// value代表那种类型的bean需要引入新的接口,这里Fruit的子类将会引入新的接口</span></span><br><span class="line">    <span class="comment">// defaultImpl代表引入新的功能的实现类</span></span><br><span class="line">    <span class="meta">@DeclareParents</span>(value = <span class="string">"com.lee.aop.aopjoinnewfunction.Fruit+"</span>,</span><br><span class="line">            defaultImpl = FoodImpl.class)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Food sFood;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在xml中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myApple"</span> <span class="attr">class</span>=<span class="string">"com.lee.aop.aopjoinnewfunction.Apple"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">在FoodFruitAppleAspect类中已经声明它作为一个切面,当Spring发现一个bean使</span></span><br><span class="line"><span class="comment">用了@Aspect注解时，Spring就会创建一个代理，然后将调用委托给</span></span><br><span class="line"><span class="comment">被代理的bean或被引入的实现，这取决于调用的方法属于被代理的</span></span><br><span class="line"><span class="comment">bean还是属于被引入的接口。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"foodFruitAppleAspect"</span> <span class="attr">class</span>=<span class="string">"com.lee.aop.aopjoinnewfunction.FoodFruitAppleAspect"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"com/lee/aop/aopjoinnewfunction/NewApple.xml"</span>);</span><br><span class="line">        <span class="comment">// 虽然MyApple是一个Fruit的实现类,并没有显示的实现了Food接口,但是通过AOP切面的形式创建了代理			  类,该代理类在运行时创建了代理对象</span></span><br><span class="line">        <span class="comment">// 该代理对象融合了新的功能</span></span><br><span class="line">        Food food = (Food) context.getBean(<span class="string">"myApple"</span>);</span><br><span class="line">        food.canEat();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-4-在xml中生命切面"><a href="#4-4-在xml中生命切面" class="headerlink" title="4.4 在xml中生命切面"></a>4.4 在xml中生命切面</h2><p>略</p>
+<h2 id="4-5-注入AspectJ切面"><a href="#4-5-注入AspectJ切面" class="headerlink" title="4.5 注入AspectJ切面"></a>4.5 注入AspectJ切面</h2><p>上面的切面是Spring AOP的变体.</p>
+<blockquote>
+<p>虽然Spring AOP能够满足许多应用的切面需求，但是与AspectJ相比，Spring AOP 是一个功能比较弱的AOP解决方案。AspectJ提供了SpringAOP所不能支持的许多类型的切点。</p>
+</blockquote>
+<blockquote>
+<p>例如，当我们需要在创建对象时应用通知，构造器切点就非常方便。不像某些其他面向对象语言中的构造器，Java构造器不同于其他的正常方法。这使得Spring基于代理的AOP无法把通知应用于对象的创建过程。</p>
+<p>对于大部分功能来讲，AspectJ切面与Spring是相互独立的。虽然它们可以织入到任意的Java应用中，这也包括了Spring应用，但是在应用AspectJ切面时几乎不会涉及到Spring。</p>
+</blockquote>
+<h1 id="第10章-通过Spring和JDBC征服数据库"><a href="#第10章-通过Spring和JDBC征服数据库" class="headerlink" title="第10章 通过Spring和JDBC征服数据库"></a>第10章 通过Spring和JDBC征服数据库</h1><blockquote>
+<p>SQLException的问题在于捕获到它的时候该如何处理。事实上，能够触发SQLException的问题通常是不能在catch代码块中解决的。大多数抛出SQLException的情况表明发生了致命性错误。如果应用程序不能连接到数据库，这通常意味着应用不能继续使用了。类似地，如果查询时出现了错误，那在运行时基本上也是无能为力。</p>
+</blockquote>
+<blockquote>
+<p>SQLException并查看其属性才能获知问题根源的更多信息。这是因为SQLException被视为处理数据访问所有问题的通用异常。对于所有的数据访问问题都会抛出SQLException，而不是对每种可能的问题都会有不同的异常类型。</p>
+</blockquote>
+<blockquote>
+<p>一方面，JDBC的异常体系过于简单了——实际上，它算不上一个体系。另一方面，Hibernate的异常体系是其本身所独有的。我们需要的数据访问异常要具有描述性而且又与特定的持久化框架无关。</p>
+<p><strong>Spring所提供的平台无关的持久化异常</strong></p>
+<p>Spring JDBC提供的数据访问异常体系解决了以上的两个问题。不同于JDBC，Spring提供了多个数据访问异常，分别描述了它们抛出时所对应的问题。表10.1对比了Spring的部分数据访问异常以及JDBC所提供的异常。</p>
+</blockquote>
+<h2 id="10-2-访问数据源"><a href="#10-2-访问数据源" class="headerlink" title="10.2 访问数据源"></a>10.2 访问数据源</h2><h3 id="10-2-1-使用JNDI配置数据源"><a href="#10-2-1-使用JNDI配置数据源" class="headerlink" title="10.2.1 使用JNDI配置数据源"></a>10.2.1 使用JNDI配置数据源</h3><p>(略)</p>
+<h3 id="10-2-2-使用数据源连接池"><a href="#10-2-2-使用数据源连接池" class="headerlink" title="10.2.2 使用数据源连接池"></a>10.2.2 使用数据源连接池</h3><p>常见的有DBCP,c3p0等,配置上大体相同</p>
+<h3 id="10-2-5-使用profile选择数据源"><a href="#10-2-5-使用profile选择数据源" class="headerlink" title="10.2.5 使用profile选择数据源"></a>10.2.5 使用profile选择数据源</h3><blockquote>
+<p>实际上，我们很可能面临这样一种需求，那就是在某种环境下需要其中一种数据源，而在另外的环境中需要不同的数据源。</p>
+<p>例如，对于开发期来说，<a href="jdbc:embedded-database" target="_blank" rel="noopener">jdbc:embedded-database</a>元素是很合适的，而在QA环境中，你可能希望使用DBCP的BasicDataSource，在生产部署环境下，可能需要使用<a href="jee:jndi-lookup" target="_blank" rel="noopener">jee:jndi-lookup</a>。</p>
+</blockquote>
+<p><strong>借助Spring的profile特性能够在运行时选择数据源</strong></p>
+<h2 id="10-3-在Spring中使用JDBC"><a href="#10-3-在Spring中使用JDBC" class="headerlink" title="10.3 在Spring中使用JDBC"></a>10.3 在Spring中使用JDBC</h2><blockquote>
+<p>JDBC不要求我们掌握其他框架的查询语言。它是建立在SQL之上的，而SQL本身就是数据访问语言。此外，与其他的技术相比，<strong>使用JDBC能够更好地对数据访问的性能进行调优</strong>。JDBC允许你使用数据库的所有特性，而这是其他框架不鼓励甚至禁止的。</p>
+<p>再者，相对于持久层框架，<strong>JDBC能够让我们在更低的层次上处理数据</strong>，<strong>我们可以完全控制应用程序如何读取和管理数据，包括访问和管理数据库中单独的列</strong>。这种细粒度的数据访问方式在很多应用程序中是很方便的。例如在报表应用中，如果将数据组织为对象，而接下来唯一要做的就是将其解包为原始数据，那就没有太大意义了。</p>
+</blockquote>
+<p>理解:很多时候我们先将基本的功能实现了,再考虑优化问题,提高性能等.而使用持久层框架,它们帮我们做了很多封装,会隐藏很多细节,这样有针对性的优化就会付出很多成本.</p>
+<blockquote>
+<p>首先使代码正确的运行,然后再提高代码的速度.</p>
+<p>摘自《Java并发编程实战》</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/Spring加载resource时classpath/" rel="next" title="Spring加载resource时classpath*:与classpath:的区别">
+                <i class="fa fa-chevron-left"></i> Spring加载resource时classpath*:与classpath:的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/icon.jpg"
+                alt="KingIsHappy" />
+            
+              <p class="site-author-name" itemprop="name">KingIsHappy</p>
+              <p class="site-description motion-element" itemprop="description">这是我的个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BlueLeer" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-GitHub"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/SuperBlueMe" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-Spring之旅"><span class="nav-number">1.</span> <span class="nav-text">第1章 Spring之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-简化Java开发"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简化Java开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-基于POJO的轻量级和最小侵入性编程"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 基于POJO的轻量级和最小侵入性编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-通过依赖注入和面向接口实现松耦合"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 通过依赖注入和面向接口实现松耦合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-基于切面和惯例进行声明式编程（应用切面）"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 基于切面和惯例进行声明式编程（应用切面）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-使用模板消除样板式代码"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.1.4 使用模板消除样板式代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Spring容器"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Spring容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-使用应用上下文"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 使用应用上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-Bean的生命周期"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 Bean的生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Spring模块"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Spring模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Spring新方向"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Spring新方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-小节"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 小节</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2章-装配Bean（Bean的配置与获取）"><span class="nav-number">2.</span> <span class="nav-text">第2章 装配Bean（Bean的配置与获取）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Spring容器的配置方式"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Spring容器的配置方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第4章-面向切面的Spring-Spring中的AOP"><span class="nav-number">3.</span> <span class="nav-text">第4章  面向切面的Spring(Spring中的AOP)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-什么是面向切面编程"><span class="nav-number">3.1.</span> <span class="nav-text">4.1 什么是面向切面编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-AOP相关术语"><span class="nav-number">3.1.1.</span> <span class="nav-text">4.1.1 AOP相关术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-Spring对AOP的支持"><span class="nav-number">3.1.2.</span> <span class="nav-text">4.1.2 Spring对AOP的支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-编写切点"><span class="nav-number">3.2.</span> <span class="nav-text">4.2 编写切点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-使用注解创建切面"><span class="nav-number">3.3.</span> <span class="nav-text">4.3 使用注解创建切面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-在xml中生命切面"><span class="nav-number">3.4.</span> <span class="nav-text">4.4 在xml中生命切面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-注入AspectJ切面"><span class="nav-number">3.5.</span> <span class="nav-text">4.5 注入AspectJ切面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第10章-通过Spring和JDBC征服数据库"><span class="nav-number">4.</span> <span class="nav-text">第10章 通过Spring和JDBC征服数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-2-访问数据源"><span class="nav-number">4.1.</span> <span class="nav-text">10.2 访问数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-1-使用JNDI配置数据源"><span class="nav-number">4.1.1.</span> <span class="nav-text">10.2.1 使用JNDI配置数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-2-使用数据源连接池"><span class="nav-number">4.1.2.</span> <span class="nav-text">10.2.2 使用数据源连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-5-使用profile选择数据源"><span class="nav-number">4.1.3.</span> <span class="nav-text">10.2.5 使用profile选择数据源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-3-在Spring中使用JDBC"><span class="nav-number">4.2.</span> <span class="nav-text">10.3 在Spring中使用JDBC</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KingIsHappy</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共24.9k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
