@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Coding...Coding...">
 <meta property="og:description" content="虽然在Windows系统上安装的Git是可以在图形界面上进行操作的,但是我们并不应该这么做,Git的各种命令才是我们应该掌握的,而且将来我们不管换成什么样的操作系统,使用Git命令来操作都是通用的 1. 创建代码仓库初次打开Bash的时候我们应该配置身份 12git confing --global user.name &quot;yourname&quot;git confing --global user.ema">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T16:03:18.846Z">
+<meta property="og:updated_time" content="2018-05-17T15:09:21.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git版本控制工具的简单使用">
 <meta name="twitter:description" content="虽然在Windows系统上安装的Git是可以在图形界面上进行操作的,但是我们并不应该这么做,Git的各种命令才是我们应该掌握的,而且将来我们不管换成什么样的操作系统,使用Git命令来操作都是通用的 1. 创建代码仓库初次打开Bash的时候我们应该配置身份 12git confing --global user.name &quot;yourname&quot;git confing --global user.ema">
@@ -463,6 +463,30 @@
 <li>关键的一步,将远程仓库最新的文件pull到本地,并和本地的合并,普通的合并是<code>git pull origin master</code>,但是,注意啦,这里的拉取合并指令为<strong>:<code>git pull --rebase origin master</code></strong></li>
 <li>上传:<code>git push origin master</code></li>
 </ol>
+<h3 id="10-其他"><a href="#10-其他" class="headerlink" title="10.其他"></a>10.其他</h3><ul>
+<li>git配置账号信息<ul>
+<li>git config:局部</li>
+<li>git config –global:全局</li>
+</ul>
+</li>
+<li>git log:查看操作日志(常用)</li>
+<li>git status<ul>
+<li>文件显示红色:未被git管理</li>
+<li>文件显示绿色:已被git管理</li>
+</ul>
+</li>
+<li>git命令别名设置(原生命令为主)</li>
+<li>git版本回退<ul>
+<li>git reset –hard head^ 回退到上一个版本</li>
+<li>git reset –hard 哈希值(前7位)</li>
+<li>git reflog:查看历史操作记录</li>
+</ul>
+</li>
+<li>git模拟多人开发<ul>
+<li>有可能存在冲突问题.例如:A操作并且提交代码后,B没有更新,直接操作最后push到远程的版本库(拒绝访问).正确的做法是,提交之前先pull最新的代码到本地并合并,然后解决冲突文件,然后提交到本地版本库,最后再进行提交到远程仓库.</li>
+</ul>
+</li>
+</ul>
 <p>参考:<a href="https://www.cnblogs.com/specter45/p/github.html" target="_blank" rel="noopener">github入门到上传本地项目</a></p>
 <p>注意:此博客中操作步骤可能会导致问题</p>
 
@@ -505,8 +529,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/06/Spring中数据库的相关操作/" rel="prev" title="基于JDBC的Spring中数据库事务的相关操作">
-                基于JDBC的Spring中数据库事务的相关操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/06/Java中的Pattern、Matcher、常用的正则表达式/" rel="prev" title="Java中的Pattern、Matcher、常用的正则表达式">
+                Java中的Pattern、Matcher、常用的正则表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -588,7 +612,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -599,7 +623,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -610,7 +634,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -666,7 +690,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建代码仓库"><span class="nav-number">1.</span> <span class="nav-text">1. 创建代码仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-提交本地代码"><span class="nav-number">2.</span> <span class="nav-text">2. 提交本地代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-忽略文件"><span class="nav-number">3.</span> <span class="nav-text">3. 忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查看修改内容"><span class="nav-number">4.</span> <span class="nav-text">4. 查看修改内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-撤销未提交的修改"><span class="nav-number">5.</span> <span class="nav-text">5. 撤销未提交的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看提交记录"><span class="nav-number">6.</span> <span class="nav-text">6. 查看提交记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-分支的用法"><span class="nav-number">7.</span> <span class="nav-text">7. 分支的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-与远程版本库协作"><span class="nav-number">8.</span> <span class="nav-text">8. 与远程版本库协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-上传本地项目到代码仓库"><span class="nav-number">9.</span> <span class="nav-text">9.上传本地项目到代码仓库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建代码仓库"><span class="nav-number">1.</span> <span class="nav-text">1. 创建代码仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-提交本地代码"><span class="nav-number">2.</span> <span class="nav-text">2. 提交本地代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-忽略文件"><span class="nav-number">3.</span> <span class="nav-text">3. 忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查看修改内容"><span class="nav-number">4.</span> <span class="nav-text">4. 查看修改内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-撤销未提交的修改"><span class="nav-number">5.</span> <span class="nav-text">5. 撤销未提交的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看提交记录"><span class="nav-number">6.</span> <span class="nav-text">6. 查看提交记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-分支的用法"><span class="nav-number">7.</span> <span class="nav-text">7. 分支的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-与远程版本库协作"><span class="nav-number">8.</span> <span class="nav-text">8. 与远程版本库协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-上传本地项目到代码仓库"><span class="nav-number">9.</span> <span class="nav-text">9.上传本地项目到代码仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-其他"><span class="nav-number">10.</span> <span class="nav-text">10.其他</span></a></li></ol></div>
             
 
           </div>
@@ -720,7 +744,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.0k字</span>
+  <span class="post-count">博客全站共50.9k字</span>
 </div>
 
         
