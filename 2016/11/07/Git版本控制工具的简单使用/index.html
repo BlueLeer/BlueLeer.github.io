@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Coding...Coding...">
 <meta property="og:description" content="虽然在Windows系统上安装的Git是可以在图形界面上进行操作的,但是我们并不应该这么做,Git的各种命令才是我们应该掌握的,而且将来我们不管换成什么样的操作系统,使用Git命令来操作都是通用的 1. 创建代码仓库初次打开Bash的时候我们应该配置身份 12git confing --global user.name &quot;yourname&quot;git confing --global user.ema">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-17T15:09:21.178Z">
+<meta property="og:updated_time" content="2018-06-08T12:47:05.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git版本控制工具的简单使用">
 <meta name="twitter:description" content="虽然在Windows系统上安装的Git是可以在图形界面上进行操作的,但是我们并不应该这么做,Git的各种命令才是我们应该掌握的,而且将来我们不管换成什么样的操作系统,使用Git命令来操作都是通用的 1. 创建代码仓库初次打开Bash的时候我们应该配置身份 12git confing --global user.name &quot;yourname&quot;git confing --global user.ema">
@@ -460,7 +460,9 @@
 <li>添加文件到本地仓库:<code>git add .</code></li>
 <li>提交到本地仓库:<code>git commit -m &quot;提交到本地仓库&quot;</code></li>
 <li>建立和远程仓库的联系:<code>git remote add origin git@github.com:BlueLeer/SSHMerge.git</code></li>
-<li>关键的一步,将远程仓库最新的文件pull到本地,并和本地的合并,普通的合并是<code>git pull origin master</code>,但是,注意啦,这里的拉取合并指令为<strong>:<code>git pull --rebase origin master</code></strong></li>
+<li>执行<code>git add .</code>(为什么需要执行这一步呢?因为在和远程版本库建立联系以后,本地文件改变了,此时还没有添加到本地仓库,可以利用<code>gin status</code>来查看)</li>
+<li>执行<code>git commit -m &quot;和远程版本库建立联系以后的再次提交&quot;</code></li>
+<li>关键的一步,将远程仓库的文件pull到本地,并和本地的合并,普通的合并是<code>git pull origin master</code>,但是,注意啦,这里的拉取合并指令为<strong>:<code>git pull --rebase origin master</code></strong></li>
 <li>上传:<code>git push origin master</code></li>
 </ol>
 <h3 id="10-其他"><a href="#10-其他" class="headerlink" title="10.其他"></a>10.其他</h3><ul>
@@ -612,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -744,7 +746,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共57.6k字</span>
+  <span class="post-count">博客全站共57.7k字</span>
 </div>
 
         
