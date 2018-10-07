@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Wangle, Java, Android, JavaWeb" />
+  <meta name="keywords" content="单点登录SSO," />
 
 
 
@@ -81,17 +81,24 @@
 
 
 
-<meta name="description" content="这是我的个人博客">
-<meta name="keywords" content="Java程序员 使用Github Pages搭建个人博客网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coding...Coding...">
-<meta property="og:url" content="https://blueleer.github.io/archives/2017/04/index.html">
+<meta name="description" content="1.会话机制 浏览器在第一次访问Tomcat服务器的时候,Tomcat服务器会在服务端创建session对象,并存储到map中.key是session的id,value是session对象本身. 在响应的时候会把session的id通过cookie的方式写到客户端浏览器中. 浏览器会在本地的目录中把session的id写入到本地的cookie中. 在后续的请求中,都会读取本地的cookie中的内容">
+<meta name="keywords" content="单点登录SSO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单点登陆(多系统的复杂性)">
+<meta property="og:url" content="https://blueleer.github.io/2018/10/07/单点登陆-多系统的复杂性/index.html">
 <meta property="og:site_name" content="Coding...Coding...">
-<meta property="og:description" content="这是我的个人博客">
+<meta property="og:description" content="1.会话机制 浏览器在第一次访问Tomcat服务器的时候,Tomcat服务器会在服务端创建session对象,并存储到map中.key是session的id,value是session对象本身. 在响应的时候会把session的id通过cookie的方式写到客户端浏览器中. 浏览器会在本地的目录中把session的id写入到本地的cookie中. 在后续的请求中,都会读取本地的cookie中的内容">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p9xlnkn7r.bkt.clouddn.com/%E4%BC%9A%E8%AF%9D%E6%9C%BA%E5%88%B6.png">
+<meta property="og:image" content="http://p9xlnkn7r.bkt.clouddn.com/%E7%99%BB%E5%BD%95%E6%9C%BA%E5%88%B6.png">
+<meta property="og:image" content="http://p9xlnkn7r.bkt.clouddn.com/%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%A4%8D%E6%9D%82%E6%80%A7.png">
+<meta property="og:image" content="http://p9xlnkn7r.bkt.clouddn.com/%E5%BA%94%E7%94%A8%E7%BE%A4.png">
+<meta property="og:image" content="http://p9xlnkn7r.bkt.clouddn.com/cookie%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3.png">
+<meta property="og:updated_time" content="2018-10-07T13:31:31.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coding...Coding...">
-<meta name="twitter:description" content="这是我的个人博客">
+<meta name="twitter:title" content="单点登陆(多系统的复杂性)">
+<meta name="twitter:description" content="1.会话机制 浏览器在第一次访问Tomcat服务器的时候,Tomcat服务器会在服务端创建session对象,并存储到map中.key是session的id,value是session对象本身. 在响应的时候会把session的id通过cookie的方式写到客户端浏览器中. 浏览器会在本地的目录中把session的id写入到本地的cookie中. 在后续的请求中,都会读取本地的cookie中的内容">
+<meta name="twitter:image" content="http://p9xlnkn7r.bkt.clouddn.com/%E4%BC%9A%E8%AF%9D%E6%9C%BA%E5%88%B6.png">
 
 
 
@@ -121,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://blueleer.github.io/archives/2017/04/"/>
+  <link rel="canonical" href="https://blueleer.github.io/2018/10/07/单点登陆-多系统的复杂性/"/>
 
 
 
 
 
-  <title>归档 | Coding...Coding...</title>
+  <title>单点登陆(多系统的复杂性) | Coding...Coding...</title>
   
 
 
@@ -146,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
 <!-- 在右上角或者左上角实现fork me on github -->
@@ -287,410 +294,209 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 34 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blueleer.github.io/2018/10/07/单点登陆-多系统的复杂性/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KingIsHappy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding...Coding...">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">单点登陆(多系统的复杂性)</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T21:30:58+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/26/SSH项目搭建记录/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">SSH项目搭建记录(基于Maven)</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/单点登录SSO/" itemprop="url" rel="index">
+                    <span itemprop="name">单点登录SSO</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-26T11:57:42+08:00"
-              content="2017-04-26" >
-          04-26
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+          
 
+          
+          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/21/《Spring实战》（第四版）读书笔记/" itemprop="url">
-              
-                <span itemprop="name">《Spring实战》（第四版）读书笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-21T14:42:36+08:00"
-              content="2017-04-21" >
-          04-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/21/Spring加载resource时classpath/" itemprop="url">
-              
-                <span itemprop="name">Spring加载resource时classpath*:与classpath:的区别</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-21T11:37:39+08:00"
-              content="2017-04-21" >
-          04-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="1-会话机制"><a href="#1-会话机制" class="headerlink" title="1.会话机制"></a>1.会话机制</h1><ol>
+<li>浏览器在第一次访问Tomcat服务器的时候,Tomcat服务器会在服务端创建session对象,并存储到map中.key是session的id,value是session对象本身.</li>
+<li>在响应的时候会把session的id通过cookie的方式写到客户端浏览器中.</li>
+<li>浏览器会在本地的目录中把session的id写入到本地的cookie中.</li>
+<li>在后续的请求中,都会读取本地的cookie中的内容,并在请求的时候带上对应的cookie.</li>
+</ol>
+<p><strong>图解:</strong></p>
+<p><img src="http://p9xlnkn7r.bkt.clouddn.com/%E4%BC%9A%E8%AF%9D%E6%9C%BA%E5%88%B6.png" alt=""></p>
+<h1 id="2-登录机制"><a href="#2-登录机制" class="headerlink" title="2.登录机制"></a>2.登录机制</h1><p>有了会话机制，登录状态就好明白了，我们假设浏览器第一次请求服务器需要输入用户名与密码验证身份，服务器拿到用户名密码去数据库比对，正确的话说明当前持有这个会话的用户是合法用户，应该将这个会话标记为“已授权”或者“已登录”等等之类的状态，既然是会话的状态，自然要保存在会话对象中，Tomcat在会话对象中设置登录状态如下:  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HttpSession session = request.getSession();</span><br><span class="line">session.setAttribute(<span class="string">"isLogin"</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p>用户再次访问时，tomcat在会话对象中查看登录状态:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HttpSession session = request.getSession();</span><br><span class="line">session.getAttribute(<span class="string">"isLogin"</span>);</span><br></pre></td></tr></table></figure>
+<p>实现了登录状态的浏览器请求服务器模型如下图描述:</p>
+<p><img src="http://p9xlnkn7r.bkt.clouddn.com/%E7%99%BB%E5%BD%95%E6%9C%BA%E5%88%B6.png" alt=""></p>
+<p><strong>每次请求受保护资源时都会检查会话对象中的登录状态，只有 isLogin=true 的会话才能访问，登录机制因此而实现。</strong> </p>
+<h1 id="3-多系统的复杂性"><a href="#3-多系统的复杂性" class="headerlink" title="3.多系统的复杂性"></a>3.多系统的复杂性</h1><p>随着公司的发展,公司内部使用的系统越来越多.但是对于使用系统的员工来说不是个好事情.</p>
+<ol>
+<li><p>每个系统都需要记住对应的账号和密码,很多员工都是每个系统的账户和密码都一样的.</p>
+</li>
+<li><p>如果同时要使用CRM系统(客户关系管理系统),WMS系统(进销存系统),OA系统(办公自动化系统),用户需要登录三次.</p>
+</li>
+<li><p>如果不使用了,还需要分别在三个系统中依次的注销.</p>
+</li>
+</ol>
+<p><img src="http://p9xlnkn7r.bkt.clouddn.com/%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%A4%8D%E6%9D%82%E6%80%A7.png" alt=""></p>
+<p>有没有这样的功能:我只需要登录一次,公司里面所有的系统都可以使用.只需要注销一次,所有的系统都退出登录了.</p>
+<p>如果能实现这样的功能就非常好了.</p>
+<p><img src="http://p9xlnkn7r.bkt.clouddn.com/%E5%BA%94%E7%94%A8%E7%BE%A4.png" alt=""></p>
+<p>虽然单系统的登录解决方案很完美，但对于多系统应用群已经不再适用了，为什么呢？</p>
+<p>单系统登录解决方案的核心是cookie，cookie携带会话id在浏览器与服务器之间维护会话状态。但cookie是有限制的，这个限制就是cookie的域（通常对应网站的域名），浏览器发送http请求时会自动携带与该域匹配的cookie，而不是所有cookie.</p>
+<p><img src="http://p9xlnkn7r.bkt.clouddn.com/cookie%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3.png" alt=""></p>
+<p>既然这样，为什么不将web应用群中所有子系统的域名统一在一个顶级域名下，例如“*.baidu.com”，然后将它们的cookie域设置为“baidu.com”，这种做法理论上是可以的，甚至早期很多多系统登录就采用这种同域名共享cookie的方式。</p>
+<p>然而，可行并不代表好，共享cookie的方式存在众多局限。首先，应用群域名得统一；其次，应用群各系统使用的技术（至少是web服务器）要相同，不然cookie的key值（tomcat为JSESSIONID）不同，无法维持会话，共享cookie的方式是无法实现跨语言技术平台登录的，比如java、php、.net系统之间；第三，cookie本身不安全。</p>
+<p>因此，我们需要一种全新的登录方式来实现多系统应用群的登录，这就是单点登录.</p>
+<h1 id="4-HttpURLConnection的简单使用"><a href="#4-HttpURLConnection的简单使用" class="headerlink" title="4.HttpURLConnection的简单使用"></a>4.HttpURLConnection的简单使用</h1><p>在JDK的java.net包中已经提供了访问HTTP协议的基本功能的类：HttpURLConnection。</p>
+<p>HttpURLConnection是Java的标准类，它继承自URLConnection，可用于向指定网站发送GET请求、POST请求。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/13/JPA概念解析-关联关系的维护/" itemprop="url">
-              
-                <span itemprop="name">JPA概念解析-关联关系的维护</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-13T18:52:43+08:00"
-              content="2017-04-13" >
-          04-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/13/JPA概念解析-CascadeType详解/" itemprop="url">
-              
-                <span itemprop="name">JPA概念解析-CascadeType详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-13T18:26:56+08:00"
-              content="2017-04-13" >
-          04-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/12/数据库引擎MyISAM和InnoDB/" itemprop="url">
-              
-                <span itemprop="name">数据库引擎MyISAM和InnoDB及简单的源码分析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-12T23:38:22+08:00"
-              content="2017-04-12" >
-          04-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/10/Struts2使用笔记/" itemprop="url">
-              
-                <span itemprop="name">Struts2使用重点笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-10T20:53:33+08:00"
-              content="2017-04-10" >
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/10/Hibernate学习笔记3/" itemprop="url">
-              
-                <span itemprop="name">Hibernate学习笔记3</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-10T20:53:33+08:00"
-              content="2017-04-10" >
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/10/idea中Mark Directory As里的Sources Root、ReSources Root等的区别/" itemprop="url">
-              
-                <span itemprop="name">idea中Mark Directory As里的Sources Root、ReSources Root等的区别</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-10T20:53:33+08:00"
-              content="2017-04-10" >
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/09/Hibernate学习笔记2/" itemprop="url">
-              
-                <span itemprop="name">Hibernate学习笔记2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-09T11:57:42+08:00"
-              content="2017-04-09" >
-          04-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/单点登录SSO/" rel="tag"><i class="fa fa-tag"></i> 单点登录SSO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/微信公众号开发入门-一/" rel="next" title="微信公众号开发入门(一)">
+                <i class="fa fa-chevron-left"></i> 微信公众号开发入门(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2017/04/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/04/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -698,6 +504,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -718,8 +528,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -806,6 +625,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-会话机制"><span class="nav-number">1.</span> <span class="nav-text">1.会话机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-登录机制"><span class="nav-number">2.</span> <span class="nav-text">2.登录机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-多系统的复杂性"><span class="nav-number">3.</span> <span class="nav-text">3.多系统的复杂性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-HttpURLConnection的简单使用"><span class="nav-number">4.</span> <span class="nav-text">4.HttpURLConnection的简单使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -980,6 +815,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
